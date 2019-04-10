@@ -1,0 +1,36 @@
+/**
+ * Sample of some self contained module. Start by defining the variables that
+ * the user can override and the defined the style.
+ */
+/**
+ * Variables
+ */
+@textColorLogo: black;
+/**
+ * Style
+ */
+.outer-wrap-header {
+    flex-shrink: 0;
+}
+
+.region-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    margin-top: 0.3em;
+}
+
+.site-logo-text a {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    line-height: 1em;
+    color: @textColorLogo;
+    text-decoration: none;
+}
+
+.site-logo-text-icon {
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}

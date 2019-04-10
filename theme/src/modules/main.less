@@ -1,0 +1,45 @@
+/**
+ * Sample of some self contained module. Start by defining the variables that
+ * the user can override and the defined the style.
+ */
+/**
+ * Variables
+ */
+@bgColorMain: white;
+/**
+ * Style
+ */
+.outer-wrap-main {
+    flex: 1 0 auto;
+}
+
+.inner-wrap-main {
+    display: flex;
+    flex-direction: row;
+}
+
+.row {
+    margin: 0;
+}
+
+.row::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.region-main {
+    margin-bottom: @magicNumber * 2;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.region-sidebar-left,
+.region-sidebar-right {
+    margin-bottom: @magicNumber * 2;
+}
+
+.outer-wrap-breadcrumb,
+.outer-wrap-main {
+    background-color: @bgColorMain;
+}
