@@ -1,3 +1,5 @@
-#### Footer col 3
+#### Social media
 
-Med brödtext i ett stycke som säger något trevligt om just detta block, eller kanske en lista av länkar.
+[Gitter](https://gitter.im/mosbth/oophp)
+[Forum](https://dbwebb.se/forum/viewforum.php?f=37)
+[Kursrepo på GitHub](https://github.com/dbwebb-se/oophp)

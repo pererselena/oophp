@@ -17,6 +17,6 @@ Mitt första möte med programmering fick jag i högstadiet då vi fick lära os
 
 
 
-Vill du läsa mer om vad jag jobbat med så kan du kika på min [Linkedin-profil](https://www.linkedin.com/in/pt90mr/).
+Vill du läsa mer om vad jag jobbat med så kan du kika på min [Linkedin-profil](https://www.linkedin.com/in/elena-perers/).
 
 /Elena Perers

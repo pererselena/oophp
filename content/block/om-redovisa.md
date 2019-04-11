@@ -1,3 +1,3 @@
 #### Redovisa på GitHub
 
-Skriv något kort om ditt redovisa-repo och länka till [repot för me/redovisa på GitHub](https://github.com/pererselena/oophp).
+Här finner du mitt redovisa-repo till [repot för me/redovisa på GitHub](https://github.com/pererselena/oophp).

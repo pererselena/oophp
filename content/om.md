@@ -19,10 +19,17 @@ views:
 Om
 =========================
 
-Detta innehåll är skrivet i markdown och du hittar innehållet i filen `content/om.md`.
+Den här webbplatsen är skapad för kursen objektorienterade webbteknologier (OOPHP).
+I den här kursen kommer jag att lära mig följande delar:
 
-Skriv några kloka ord om kursen?
+* Programmering i webbmiljö, syntax, semantik, koppling mot databaser, datastrukturer och inbyggda funktioner.
 
-Lägg till en fin och representativ bild för kursen, enligt ditt eget val.
+* Objektorienterad programmering i PHP med språkkonstruktioner och begrepp. Objektorientering som sätt att strukturera och återanvända kod. Enkla designmönster.
 
-[FIGURE src=image/om.jpg caption="En fin bil som demobild, lite oklart hur den är representativ, men ändå..."]
+* SQL med en databas tillsammans med PHP Data Objects.
+
+* Utveckling av webbapplikationer i ett ramverk där tekniker såsom webbserver (Apache), PHP, HTML, CSS, och SQL integreras tillsammans med ett webbaserat ramverk.
+
+* Användning av verktyg och tekniker som lämpar sig för utveckling av webbapplikationer, tex UNIX/Linux, installation på extern webbserver, ssh, ftp/sftp, databasklienter såsom PHPMyAdmin, MySQL Workbench och kommandoklienter.
+
+[FIGURE src=image/om.jpg caption="Bild på kod"]
