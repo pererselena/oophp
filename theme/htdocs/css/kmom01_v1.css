@@ -5456,6 +5456,7 @@ iframe {
 html {
   overflow-y: scroll;
   background-color: white;
+  height: 100%;
 }
 body {
   margin: 0;

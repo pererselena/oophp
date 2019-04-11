@@ -5190,6 +5190,7 @@ fieldset {
 html {
   overflow-y: scroll;
   background-color: #424242;
+  height: 100%;
 }
 body {
   margin: 0;
