@@ -1,9 +1,7 @@
 /*!
- * Stylesheet to be the next version of the stylesheet for dbwebb.se.
+ * Stylesheet to be the next version of the stylesheet for my site.
  *
- * This stylesheet is a look-a-like the dbwebb.se stylesheet and it is
- * special for the design course. The style is used to show off various
- * constructions of the website to show how they could be styled.
+ *
  */
 /**
  * Normalize and reset the style.
@@ -4535,14 +4533,14 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
   margin: 0;
   padding: 0;
   margin-top: 1em;
-  border-left: 1px solid #666;
-  border-bottom: 1px solid #666;
+  border-left: 1px solid darkgray;
+  border-bottom: 1px solid darkgray;
 }
 .image-overlay li {
   display: inline-block;
   margin: 0;
   padding: 0;
-  border-right: 1px solid #666;
+  border-right: 1px solid darkgray;
 }
 .image-overlay li a {
   display: inline-block;
@@ -5074,7 +5072,7 @@ a:hover {
 .blog-list h1 {
   font-size: 1.875em;
   line-height: 1.6;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #CCC;
 }
 .blog-list h1 a {
   color: inherit;
@@ -5085,7 +5083,7 @@ a:hover {
   text-decoration: underline;
 }
 .blog-post h1 {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #CCC;
 }
 .blog-list-item {
   margin-bottom: 48px;
@@ -5178,6 +5176,269 @@ fieldset {
   min-height: 440px;
 }
 /**
+ * Sample of some self contained module. Start by defining the variables that
+ * the user can override and the defined the style.
+ */
+/**
+ * Variables
+ */
+/**
+ * Style
+ */
+.my-navbar {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  font-size: 1em;
+  justify-content: flex-end;
+  color: black;
+}
+.rm-navbar ul {
+  list-style: none;
+}
+.rm-small-wrapper {
+  display: none;
+}
+/**
+ * Sample of some self contained module. Start by defining the variables that
+ * the user can override and the defined the style.
+ */
+/**
+ * Variables
+ */
+/**
+ * Style
+ */
+.outer-wrap-header {
+  flex-shrink: 0;
+}
+.region-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 0.3em;
+}
+.site-logo-text a {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  line-height: 1em;
+  color: black;
+  text-decoration: none;
+}
+.site-logo-text-icon {
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+}
+/**
+ * Sample of some self contained module. Start by defining the variables that
+ * the user can override and the defined the style.
+ */
+/**
+ * Variables
+ */
+/**
+ * Style
+ */
+.outer-wrap-main {
+  flex: 1 0 auto;
+}
+.inner-wrap-main {
+  display: flex;
+  flex-direction: row;
+}
+.row {
+  margin: 0;
+}
+.row::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.region-main {
+  margin-bottom: 48px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+.region-sidebar-left,
+.region-sidebar-right {
+  margin-bottom: 48px;
+}
+.outer-wrap-breadcrumb,
+.outer-wrap-main {
+  background-color: white;
+}
+/**
+ * Sample of some self contained module. Start by defining the variables that
+ * the user can override and the defined the style.
+ */
+/**
+ * Variables
+ */
+/**
+ * Style
+ */
+.outer-wrap-footer {
+  flex-shrink: 0;
+  background-color: #102946;
+  color: white;
+}
+.region-footer h4 {
+  border-bottom: none;
+}
+.footer-column-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+.footer-column ul {
+  list-style: none;
+}
+.inner-wrap-footer p {
+  font-size: 1em;
+}
+.fab {
+  font-size: 2em;
+  color: white;
+  margin-right: 1em;
+}
+iframe {
+  width: 80%;
+}
+/**
+ * Sample of some self contained module. Start by defining the variables that
+ * the user can override and the defined the style.
+ */
+/**
+ * Variables
+ */
+/**
+ * Style
+ */
+.next-previous {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.previous {
+  margin-right: 1em;
+}
+.region-breadcrumb {
+  margin-bottom: 36px;
+}
+.breadcrumb-list ul li {
+  display: inline-block;
+  text-align: center;
+  list-style: none;
+}
+.breadcrumb-list a,
+.next-previous a,
+.region-sidebar-left a {
+  color: black;
+  text-decoration: none;
+}
+/**
+ * Sidebar layout
+ */
+.toc ul {
+  list-style: none;
+  margin-bottom: -16px;
+}
+.blog-toc ul {
+  list-style: none;
+}
+/**
+ * Sample of some self contained module. Start by defining the variables that
+ * the user can override and the defined the style.
+ */
+/**
+ * Variables
+ */
+/**
+ * Style
+ */
+@media screen and (max-width: 1500px) {
+  .site-logo {
+    display: none;
+  }
+}
+@media screen and (max-width: 1025px) {
+  .rm-desktop a {
+    padding-right: 0.13em;
+  }
+  .my-navbar {
+    font-size: 1.2em;
+  }
+  .site-logo-text a {
+    font-size: 1.5em;
+  }
+}
+@media screen and (max-width: 700px) {
+  .rm-desktop {
+    display: none;
+  }
+  .rm-small {
+    font-size: 150%;
+  }
+  .rm-button-face-1 {
+    color: black;
+  }
+  .rm-small-wrapper {
+    display: block;
+  }
+  .rm-max.rm-navbar {
+    top: 1.7em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .site-logo-text a {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 300px) {
+  .site-logo-text a {
+    font-size: 0.7em;
+  }
+  .rm-max.rm-navbar {
+    top: 1em;
+  }
+}
+/**
+ * Sample of some self contained module. Start by defining the variables that
+ * the user can override and the defined the style.
+ */
+/**
+ * Variables
+ */
+/**
+ * Style
+ */
+.region-flash img {
+  width: 100%;
+}
+/**
+ * Sample of some self contained module. Start by defining the variables that
+ * the user can override and the defined the style.
+ */
+/**
+ * Variables
+ */
+/**
+ * Style
+ */
+.multi-col3-wrapper {
+  display: flex;
+  width: 100%;
+}
+.multi-col3 {
+  flex: 1;
+  padding: 1em;
+  background-color: #dfe5ec;
+}
+.region-columns-below {
+  margin-top: 0;
+  margin-bottom: 15em;
+}
+/**
  * Base style to affect HTML elements on a general scale.
  */
 /**
@@ -5189,19 +5450,19 @@ fieldset {
 }
 html {
   overflow-y: scroll;
-  background-color: #424242;
+  background-color: white;
 }
 body {
   margin: 0;
   padding: 0;
-  color: #111;
-  background-color: #fff;
+  color: #333;
+  background-color: white;
   height: 100%;
   width: 100%;
-  font: 16px/1.5 Verdana, Geneva, sans-serif;
+  font: 16px/1.5 'Gentium Basic', serif;
 }
 h4 {
-  color: black;
+  color: #a2ba18;
 }
 .inner-wrap .row {
   margin: 0;
@@ -5225,7 +5486,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Cambria, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Mitr', sans-serif;
   margin-top: 24px;
   margin-bottom: 24px;
 }
@@ -5260,7 +5521,7 @@ h2 {
   line-height: 1.6;
   font-weight: normal;
   margin-bottom: 23px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #CCC;
 }
 h2 + h3 {
   margin-top: 24px;
@@ -5270,7 +5531,7 @@ h3 {
   line-height: 1.71428571;
   font-weight: normal;
   margin-bottom: 23px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #EEE;
 }
 h3 + h4 {
   margin-top: 24px;
@@ -5280,7 +5541,7 @@ h4 {
   line-height: 1;
   font-weight: normal;
   margin-bottom: 23px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid darkgray;
 }
 h4 + h5 {
   margin-top: 24px;
@@ -5349,7 +5610,7 @@ code,
 kbd,
 samp,
 .code {
-  font-family: "Courier New", Courier, monospace;
+  font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 code,
 samp {
@@ -6140,363 +6401,6 @@ a.rm-button.rm-clicked .rm-button-face-2 {
 .footer-column-x {
   height: 100%;
 }
-/** --------------------------------------------------------------
- * Make your own custom style.
- *
- */
-/** ==============================================================
- * Base
- */
-/** ==============================================================
- * Header 
- */
-/**
- * A header style for dbwebb.se.
- */
-.outer-wrap-header {
-  height: 48px;
-  margin-bottom: 12px;
-}
-.outer-wrap-header img {
-  outline: 0;
-}
-.inner-wrap-header {
-  max-width: none;
-}
-.inner-wrap-header .row {
-  max-width: 100%;
-}
-.site-logo-text,
-.region-header-col-1 {
-  display: inline;
-  float: left;
-  width: 19.79166667%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-}
-.navbar2,
-.region-header-col-2 {
-  display: inline;
-  float: left;
-  width: 57.29166667%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-}
-.profile,
-.region-header-col-3 {
-  display: inline;
-  float: left;
-  width: 19.79166667%;
-  margin-left: 0.52083333%;
-  margin-right: 0.52083333%;
-}
-@media screen and (max-width: 1300px) {
-  .navbar2,
-  .region-header-col-2 {
-    display: inline;
-    float: left;
-    width: 69.79166667%;
-    margin-left: 0.52083333%;
-    margin-right: 0.52083333%;
-  }
-  .profile,
-  .region-header-col-3 {
-    display: inline;
-    float: left;
-    width: 7.29166667%;
-    margin-left: 0.52083333%;
-    margin-right: 0.52083333%;
-  }
-}
-@media screen and (max-width: 1000px) {
-  .site-logo-text,
-  .region-header-col-1 {
-    display: inline;
-    float: left;
-    width: 23.95833333%;
-    margin-left: 0.52083333%;
-    margin-right: 0.52083333%;
-  }
-  .navbar2,
-  .region-header-col-2 {
-    display: inline;
-    float: left;
-    width: 65.625%;
-    margin-left: 0.52083333%;
-    margin-right: 0.52083333%;
-  }
-}
-@media screen and (max-width: 800px) {
-  .site-logo-text,
-  .region-header-col-1 {
-    display: inline;
-    float: left;
-    width: 65.625%;
-    margin-left: 0.52083333%;
-    margin-right: 0.52083333%;
-  }
-  .navbar2,
-  .region-header-col-2 {
-    display: none;
-  }
-  .profile,
-  .region-header-col-3 {
-    display: inline;
-    float: left;
-    width: 32.29166667%;
-    margin-left: 0.52083333%;
-    margin-right: 0.52083333%;
-  }
-}
-/** --------------------------------------------------------------
-* Logo and logo text (PERHAPS MOVE TO OWN MODULE/LAYOUT FILE)
-*/
-.site-logo-text {
-  font-size: 42px;
-  line-height: 1;
-  text-shadow: 2px -2px 2px #ccc;
-}
-.site-logo-text a {
-  color: #333;
-  text-decoration: none;
-  transition: all 0.2s linear;
-}
-.site-logo-text a:hover {
-  color: #3B440D;
-  text-shadow: 2px -2px 2px #9FB129;
-}
-.site-logo-text-icon img {
-  vertical-align: bottom;
-  display: none;
-}
-.logo-1 {
-  position: absolute;
-  top: 30px;
-  left: 10px;
-}
-@media screen and (max-width: 1750px) {
-  .logo-1,
-  .site-logo img {
-    width: 200px;
-  }
-}
-@media screen and (max-width: 1550px) {
-  .logo-1,
-  .site-logo img {
-    width: 150px;
-  }
-}
-@media screen and (max-width: 1400px) {
-  .logo-1,
-  .site-logo img {
-    width: 100px;
-  }
-}
-@media screen and (max-width: 1350px) {
-  .site-logo-text-icon img {
-    display: inline;
-  }
-  .logo-1,
-  .site-logo {
-    display: none;
-  }
-}
-@media screen and (max-width: 1100px) {
-  .outer-wrap,
-  .inner-wrap-footer {
-    margin-left: 4px;
-    margin-right: 4px;
-  }
-  .outer-wrap-flash,
-  .outer-wrap-footer {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .outer-wrap-flash .row {
-    max-width: 100%;
-  }
-  .footer {
-    padding-left: 4px;
-    padding-right: 4px;
-  }
-}
-.outer-wrap-after-main {
-  margin-top: -48px;
-}
-/** ==============================================================
- * Column above and below
- *
- */
-.inner-wrap-columns-above {
-  margin-bottom: 24px;
-}
-/** ==============================================================
- * Main
- *
- */
-.inner-wrap-main {
-  padding-bottom: 48px;
-}
-/** ==============================================================
- * Article and Sidebar blocks
- *
- */
-.article {
-  margin-bottom: 72px;
-}
-.article .block,
-.sidebar .block,
-.columns-above .block,
-.columns-below .block {
-  margin-bottom: 48px;
-}
-.article .block h4,
-.sidebar .block h4,
-.columns-above .block h4,
-.columns-below .block h4 {
-  border-top: 1px solid #ccc;
-  background-color: #eee;
-  background-color: #ccc;
-  background-image: -moz-linear-gradient(left, #fff, #ccc);
-  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#fff), to(#ccc));
-  background-image: -webkit-linear-gradient(left, #fff, #ccc);
-  background-image: -o-linear-gradient(left, #fff, #ccc);
-  background-image: linear-gradient(to right, #fff, #ccc);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffcccccc', GradientType=1);
-}
-.article .block h4 a,
-.sidebar .block h4 a,
-.columns-above .block h4 a,
-.columns-below .block h4 a {
-  color: inherit;
-  text-decoration: none;
-}
-.article .block h4 a:hover,
-.sidebar .block h4 a:hover,
-.columns-above .block h4 a:hover,
-.columns-below .block h4 a:hover {
-  color: #33f;
-  text-decoration: underline;
-}
-.article .block h4 a,
-.sidebar .block h4 a,
-.columns-above .block h4 a,
-.columns-below .block h4 a {
-  display: block;
-  text-decoration: none;
-  transition: all 0.6s linear;
-}
-.article .block h4 a:hover,
-.sidebar .block h4 a:hover,
-.columns-above .block h4 a:hover,
-.columns-below .block h4 a:hover {
-  color: #3B440D;
-  text-shadow: 0px 0px 1px #9FB129;
-  text-decoration: underline;
-}
-/** ==============================================================
- * The footer column area.
- *
- */
-/**
- * A footer style for dbwebb.se.
- */
-.outer-wrap-footer {
-  background-color: #424242;
-  padding-top: 24px;
-  padding-bottom: 48px;
-}
-.footer-column-wrapper {
-  color: #ddd;
-  border-bottom: 1px solid #666;
-  padding-bottom: 24px;
-  margin-bottom: 48px;
-}
-.footer-column-wrapper ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.footer-column-wrapper a {
-  color: inherit;
-}
-.footer-column-x {
-  padding-bottom: 24px;
-  padding-right: 1em;
-}
-.footer-column-1,
-.footer-column-2 {
-  border-right: 1px solid #666;
-}
-.footer-column-2,
-.footer-column-3 {
-  padding-left: 1em;
-}
-.site-footer {
-  color: #aaa;
-  text-align: center;
-  padding-bottom: 24px;
-}
-.site-footer ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-.site-footer li {
-  display: inline-block;
-}
-.site-footer li::after {
-  content: " • ";
-}
-.site-footer li:last-child::after {
-  content: none;
-}
-.site-footer a {
-  color: inherit;
-}
-@media screen and (max-width: 770px) {
-  .footer-column-wrapper,
-  .footer-column-x {
-    padding-right: 0;
-  }
-  .footer-column {
-    display: inline;
-    float: left;
-    width: 98.95833333%;
-    margin-left: 0.52083333%;
-    margin-right: 0.52083333%;
-  }
-  .footer-column-x h4 {
-    border-bottom: 1px solid #999;
-  }
-  .footer-column-1,
-  .footer-column-2 {
-    border-right: none;
-  }
-  .footer-column-2,
-  .footer-column-3 {
-    padding-left: 0;
-  }
-  .fa-4x {
-    font-size: 2em;
-  }
-}
-/** ==============================================================
- * Route specific style.
- */
-.route- .outer-wrap-flash {
-  margin-bottom: 24px;
-}
-.route- .article {
-  margin-bottom: 0;
-}
-.route-kurser .outer-wrap-main,
-.route-material .outer-wrap-main,
-.route-utbildning .outer-wrap-main,
-.route-community .outer-wrap-main {
-  display: none;
-}
 /**
  * Show off the regions used in the website, to ease styling.
  */
@@ -6556,3 +6460,120 @@ a.rm-button.rm-clicked .rm-button-face-2 {
 /**
  * My settings.
  */
+/*!
+ * Stylesheet for design kmom01.
+ *
+ * This stylesheet is for the design course and kmom01. Fill it with style
+ * to style up the website so it is useable.
+ */
+.outer-wrap-header,
+.rm-desktop ul {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.outer-wrap-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.region-footer {
+  border-top: none;
+}
+.outer-wrap-breadcrumb,
+.outer-wrap-main {
+  background-color: white;
+}
+.my-navbar {
+  font-family: 'Mitr', sans-serif;
+  text-transform: uppercase;
+}
+.rm-desktop li a:hover {
+  text-decoration: none;
+}
+.rm-desktop li a {
+  text-decoration: none;
+  color: black;
+}
+.rm-desktop li a:after,
+.rm-desktop li a:before {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #a2ba18;
+  content: "";
+  opacity: 0;
+  transition: all 0.7s;
+}
+.rm-desktop li a:before {
+  top: 0;
+  transform: translateY(10px);
+}
+.rm-desktop li a:after {
+  bottom: 0;
+  transform: translateY(-10px);
+}
+.rm-desktop li a:hover:after,
+.rm-desktop li a:hover:before {
+  text-decoration: none;
+  opacity: 1;
+  transform: translateY(0px);
+}
+.right {
+  float: right;
+}
+.blog-list-item h1 a {
+  text-decoration: none;
+  color: black;
+}
+h4 {
+  border-bottom-style: dashed;
+}
+.breadcrumb-list a:hover,
+.next-previous a:hover {
+  background-color: rgba(170, 169, 169, 0.596);
+  padding: 0.2em;
+}
+.breadcrumb-list a,
+.toc ul li a {
+  position: relative;
+  transition: all 2s;
+}
+.breadcrumb-list a:after,
+.toc ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  content: '.';
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+.breadcrumb-list a:hover,
+.toc ul li a:hover {
+  color: #fff;
+  z-index: 1;
+}
+.breadcrumb-list a:hover:after,
+.toc ul li a:hover:after {
+  z-index: -10;
+  animation: fill 1s forwards;
+  -webkit-animation: fill 1s forwards;
+  -moz-animation: fill 1s forwards;
+  opacity: 1;
+}
+.breadcrumb-list a,
+.toc li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.breadcrumb-list a:hover,
+.toc li a:hover {
+  background-color: #555;
+  color: white;
+}
