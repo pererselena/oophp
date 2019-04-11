@@ -5246,6 +5246,7 @@ fieldset {
  */
 .outer-wrap-main {
   flex: 1 0 auto;
+  flex-shrink: 0;
 }
 .inner-wrap-main {
   display: flex;
@@ -5415,6 +5416,9 @@ iframe {
  */
 .region-flash img {
   width: 100%;
+}
+.outer-wrap-flash {
+  flex-shrink: 0;
 }
 /**
  * Sample of some self contained module. Start by defining the variables that
