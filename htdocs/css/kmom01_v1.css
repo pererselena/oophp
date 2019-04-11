@@ -5189,7 +5189,7 @@ fieldset {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  font-size: 1em;
+  font-size: 1.2em;
   justify-content: flex-end;
   color: black;
 }
@@ -5230,6 +5230,9 @@ fieldset {
 .site-logo-text-icon {
   margin-right: 0.5em;
   margin-left: 0.5em;
+}
+.site-logo {
+  display: none;
 }
 /**
  * Sample of some self contained module. Start by defining the variables that
@@ -5360,19 +5363,17 @@ iframe {
   .site-logo {
     display: none;
   }
-}
-@media screen and (max-width: 1025px) {
   .rm-desktop a {
     padding-right: 0.13em;
   }
   .my-navbar {
-    font-size: 1.2em;
-  }
-  .site-logo-text a {
-    font-size: 1.5em;
+    font-size: 0.8em;
   }
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1025px) {
+  .site-logo-text a {
+    font-size: 2.5em;
+  }
   .rm-desktop {
     display: none;
   }
@@ -5391,12 +5392,12 @@ iframe {
 }
 @media screen and (max-width: 500px) {
   .site-logo-text a {
-    font-size: 1em;
+    font-size: 2em;
   }
 }
 @media screen and (max-width: 300px) {
   .site-logo-text a {
-    font-size: 0.7em;
+    font-size: 1.5em;
   }
   .rm-max.rm-navbar {
     top: 1em;
@@ -5782,14 +5783,15 @@ select {
  * and other regions of the page including route specific styles.
  */
 /** ==============================================================
- * Horisontal grid setup 
+ * Horisontal grid setup
  */
 .inner-wrap {
   margin-right: auto;
   margin-left: auto;
   max-width: 1100px;
 }
-.inner-wrap.inner-wrap-header {
+.inner-wrap.inner-wrap-header,
+.inner-wrap.inner-wrap-flash {
   margin-right: auto;
   margin-left: auto;
   max-width: 100%;
@@ -5806,7 +5808,7 @@ select {
   clear: both;
 }
 /** ==============================================================
- * Header 
+ * Header
  */
 /*
 .site-header {
