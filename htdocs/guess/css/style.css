@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    overflow-y: scroll;
+    height: 100%;
+    margin: 0;
+    font-size: 100%;
+}
+
+main {
+    margin: 0 auto;
+    width: 75%;
+    text-align: center;
+    padding-top: 5em;
+}
+
+.buttons_input {
+    border-style: none;
+    text-align: center;
+    background-color: #2f2e2ede;
+    margin-right: 3em;
+    margin-bottom: 3em;
+    width: 15em;
+    line-height: 5em;
+    color: #fff;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 1em;
+}
+
+.buttons_input:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+input[type=number] {
+    width: 20em;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin: 3em;
+}
+
+h1 {
+    font-size: 1.4em;
+    margin-bottom: 2em;
+}
+
+p {
+    font-size: 1em;
+}
