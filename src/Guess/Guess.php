@@ -143,7 +143,7 @@ class Guess
     {
         $res = "";
         if ($guess > 100 || $guess < 1) {
-            throw new Elpr\Guess\GuessException("Guess is not between 1 and 100.");
+            throw new \Elpr\GuessException\GuessException("Guess is not between 1 and 100.");
         } else {
             if ($this->doInit === "Start from beginning" || $this->number === -1) {
                 //$res = $this->number;

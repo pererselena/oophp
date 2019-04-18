@@ -22,7 +22,9 @@ namespace Anax\View;
         <?php endif; ?>
 
     </form>
-
+    <pre>
+        <?= var_dump($_SESSION);  ?>
+    </pre>
     <?php if ($doGuess) : ?>
         <p>Your guess <?= $guess ?> is <b><?= $res ?></b></p>
     <?php endif; ?>
