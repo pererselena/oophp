@@ -1,10 +1,10 @@
 <?php
 
-namespace Elpr\GuessException;
+namespace Elpr\Guess;
 
 /**
  * Exception class for GuessException.
  */
-class GuessException extends Exception
+class GuessException extends \Exception
 {
 }

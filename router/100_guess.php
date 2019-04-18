@@ -50,7 +50,7 @@ $app->router->get("guess/play", function () use ($app) {
         "doCheat" => $doCheat ?? null
     ];
     $_SESSION["object"] = serialize($object);
-    
+
     $app->page->add("guess/play", $data);
     return $app->page->render([
         "title" => $title,
@@ -94,13 +94,11 @@ $app->router->post("guess/play", function () use ($app) {
 
         try {
             $res = $object->makeGuess((int)$guess);
-        } catch (GuessException $e) {
+        } catch (Elpr\Guess\GuessException $e) {
             $res = "not between 1 and 100";
         }
         $_SESSION["res"] = $res;
         $_SESSION["guess"] = $guess;
-        var_dump("tja");
-        var_dump($res);
     }
     $_SESSION["object"] = serialize($object);
 
