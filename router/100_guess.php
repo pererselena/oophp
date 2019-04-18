@@ -12,7 +12,7 @@
 $app->router->get("guess/init", function () use ($app) {
     // Init the game;
     $object = new Elpr\Guess\Guess();
-    //$_SESSION["object"] = serialize($object);
+    $_SESSION["object"] = serialize($object);
 
     return $app->response->redirect("guess/play");
 });
