@@ -30,8 +30,7 @@ $app->router->get("guess/play", function () use ($app) {
     $doInit = $_SESSION["doInit"] ?? "";
     $doGuess = $_SESSION["doGuess"] ?? "";
     $doCheat = $_SESSION["doCheat"] ?? "";
-    $res = $_SESSION["res"] ?? "";;
-
+    $res = $_SESSION["res"] ?? "";
 
     if (isset($_SESSION["object"])) {
         $object = unserialize($_SESSION["object"]);
@@ -91,7 +90,6 @@ $app->router->post("guess/play", function () use ($app) {
     }
 
     if ($doGuess) {
-
         try {
             $res = $object->makeGuess((int)$guess);
         } catch (Elpr\Guess\GuessException $e) {

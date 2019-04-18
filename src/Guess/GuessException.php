@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Exception for GuessException.
+ */
 namespace Elpr\Guess;
 
 /**

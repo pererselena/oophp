@@ -1,4 +1,7 @@
 <?php
+/**
+ * Guessing game.
+ */
 
 namespace Elpr\Guess;
 
@@ -67,7 +70,7 @@ class Guess
 
 
     /**
-     * Set the string to show secret number..
+     * Set the string to show secret number.
      *
      * @param string $doCheat Show secret number.
      *
@@ -137,9 +140,11 @@ class Guess
      * @throws GuessException when guessed number is out of bounds.
      *
      * @return string to show the status of the guess made.
+     *
+     * @param int $guess namber that has been guessed.
      */
 
-    public function makeGuess($guess)
+    public function makeGuess(int $guess)
     {
         $res = "";
         if ($guess > 100 || $guess < 1) {
