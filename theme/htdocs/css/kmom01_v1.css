@@ -5443,6 +5443,33 @@ iframe {
   margin-top: 0;
   margin-bottom: 15em;
 }
+/*!
+ * Stylesheet for Guess my number.
+ *
+ */
+.buttons_input {
+  border-style: none;
+  text-align: center;
+  background-color: #2f2e2ede;
+  margin-right: 3em;
+  margin-bottom: 3em;
+  width: 15em;
+  line-height: 5em;
+  color: #fff;
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 1em;
+}
+.buttons_input:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+input[type=number] {
+  width: 20em;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  margin: 3em;
+}
 /**
  * Base style to affect HTML elements on a general scale.
  */
