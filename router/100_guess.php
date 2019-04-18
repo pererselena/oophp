@@ -20,9 +20,49 @@ $app->router->get("guess/init", function () use ($app) {
 
 
 /**
- * Play the game
+ * Play the game - show game status
  */
 $app->router->get("guess/play", function () use ($app) {
+    $title = "Play the game!";
+
+    //Incoming variables.
+    // $guess = $_POST["guess"] ?? null;
+    // $doInit = $_POST["doInit"] ?? "";
+    // $doGuess = $_POST["doGuess"] ?? "";
+    // $doCheat = $_POST["doCheat"] ?? "";
+    $object = new Elpr\Guess\Guess();
+    // $res = null;
+
+
+    // if (isset($_SESSION["object"])) {
+    //     $object = unserialize($_SESSION["object"]);
+    // } else {
+    //     $object = new Elpr\Guess\Guess();
+    //     $_SESSION["object"] = serialize($object);
+    // }
+
+    $data = [
+        "guess" => $guess ?? null,
+        "tries" => $object->tries(),
+        "number" => $object->number(),
+        // "res" => $res,
+        "object" => $object,
+        "doGuess" => $doGuess ?? null,
+        "doCheat" => $doCheat ?? null
+    ];
+
+    $app->page->add("guess/play", $data);
+    return $app->page->render([
+        "title" => $title,
+    ]);
+});
+
+
+
+/**
+ * Play the game - make a guess
+ */
+$app->router->post("guess/play", function () use ($app) {
     $title = "Play the game!";
 
     //Incoming variables.
@@ -31,7 +71,7 @@ $app->router->get("guess/play", function () use ($app) {
     $doGuess = $_POST["doGuess"] ?? "";
     $doCheat = $_POST["doCheat"] ?? "";
     $object = new Elpr\Guess\Guess();
-    $res = null;
+
 
 
     if (isset($_SESSION["object"])) {
@@ -41,18 +81,5 @@ $app->router->get("guess/play", function () use ($app) {
         $_SESSION["object"] = serialize($object);
     }
 
-    $data = [
-        "guess" => $guess,
-        "tries" => $object->tries(),
-        "number" => $object->number(),
-        "res" => $res,
-        "object" => $object,
-        "doGuess" => $doGuess,
-        "doCheat" => $doCheat
-    ];
-
-    $app->page->add("guess/play", $data);
-    return $app->page->render([
-        "title" => $title,
-    ]);
+    return $app->response->redirect("guess/play");
 });
