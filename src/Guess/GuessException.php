@@ -1,6 +1,6 @@
 <?php
 
-namespace Elpr\Guess;
+namespace Elpr\GuessException;
 
 /**
  * Exception class for GuessException.

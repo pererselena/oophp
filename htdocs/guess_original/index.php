@@ -8,8 +8,6 @@ include(__DIR__ . "/autoload.php");
 
 
 //Incoming variables.
-// $number = $_POST["number"] ?? null;
-// $tries = $_POST["tries"] ?? null;
 $guess = $_POST["guess"] ?? null;
 $doInit = $_POST["doInit"] ?? "";
 $doGuess = $_POST["doGuess"] ?? "";
