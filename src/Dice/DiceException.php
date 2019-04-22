@@ -2,11 +2,11 @@
 /**
  * Exception for GuessException.
  */
-namespace Elpr\Guess;
+namespace Elpr\Dice;
 
 /**
  * Exception class for GuessException.
  */
-class GuessException extends \Exception
+class DiceException extends \Exception
 {
 }

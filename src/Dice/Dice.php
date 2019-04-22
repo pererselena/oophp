@@ -3,12 +3,12 @@
  * Guessing game.
  */
 
-namespace Elpr\Guess;
+namespace Elpr\Dice;
 
 /**
  * Guess my number, a class supporting the game through GET, POST and SESSION.
  */
-class Guess
+class Dice
 {
     /**
      * @var int $number   The current secret number.

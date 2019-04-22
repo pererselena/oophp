@@ -9,12 +9,12 @@
 /**
  * Init the game and resirect to play the game.
  */
-$app->router->get("guess/init", function () use ($app) {
+$app->router->get("dice/init", function () use ($app) {
     // Init the game;
-    $object = new Elpr\Guess\Guess();
+    $object = new Elpr\Dice\Dice();
     $_SESSION["object"] = serialize($object);
 
-    return $app->response->redirect("guess/play");
+    return $app->response->redirect("dice/play");
 });
 
 
@@ -22,7 +22,7 @@ $app->router->get("guess/init", function () use ($app) {
 /**
  * Play the game - show game status
  */
-$app->router->get("guess/play", function () use ($app) {
+$app->router->get("dice/play", function () use ($app) {
     $title = "Play the game!";
 
     //Incoming variables.
@@ -50,7 +50,7 @@ $app->router->get("guess/play", function () use ($app) {
     ];
     $_SESSION["object"] = serialize($object);
 
-    $app->page->add("guess/play", $data);
+    $app->page->add("dice/play", $data);
     return $app->page->render([
         "title" => $title,
     ]);
@@ -61,7 +61,7 @@ $app->router->get("guess/play", function () use ($app) {
 /**
  * Play the game - make a guess
  */
-$app->router->post("guess/play", function () use ($app) {
+$app->router->post("dice/play", function () use ($app) {
     //Incoming variables.
     $guess = $_POST["guess"] ?? null;
     $doInit = $_POST["doInit"] ?? "";
@@ -77,7 +77,7 @@ $app->router->post("guess/play", function () use ($app) {
     if (isset($_SESSION["object"])) {
         $object = unserialize($_SESSION["object"]);
     } else {
-        $object = new Elpr\Guess\Guess();
+        $object = new Elpr\Dice\Dice();
         $_SESSION["object"] = serialize($object);
     }
 
@@ -86,13 +86,13 @@ $app->router->post("guess/play", function () use ($app) {
     $object->setCheat($doCheat);
 
     if ($doInit === "Start from beginning") {
-        $object = new Elpr\Guess\Guess();
+        $object = new Elpr\Dice\Dice();
     }
 
     if ($doGuess) {
         try {
             $res = $object->makeGuess((int)$guess);
-        } catch (Elpr\Guess\GuessException $e) {
+        } catch (Elpr\Dice\DiceException $e) {
             $res = "not between 1 and 100";
         }
         $_SESSION["res"] = $res;
@@ -100,5 +100,5 @@ $app->router->post("guess/play", function () use ($app) {
     }
     $_SESSION["object"] = serialize($object);
 
-    return $app->response->redirect("guess/play");
+    return $app->response->redirect("dice/play");
 });
