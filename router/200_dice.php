@@ -26,9 +26,13 @@ $app->router->get("dice/init", function () use ($app) {
  */
 $app->router->get("dice/play", function () use ($app) {
     $title = "Play the game!";
-
+    $current = $app->session->get("current");
+    $next = $app->session->get("next");
     //Incoming variables.
-    $data = [];
+    $data = [
+        "current" => $current,
+        "next" => $next
+    ];
 
     $app->page->add("dice/play", $data);
     return $app->page->render([

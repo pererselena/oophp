@@ -18,7 +18,7 @@ for ($i = 0; $i < $rolls; $i++) {
 }
 
 ?><main>
-    <h1>Rolling <?= $rolls ?> graphic dices</h1>
+    <h1><?= $current->name ?> rolling <?= $rolls ?> graphic dices</h1>
 
     <p>
     <?php foreach ($class as $value) : ?>
