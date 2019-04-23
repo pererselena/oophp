@@ -47,6 +47,27 @@ $app->router->get("dice/play", function () use ($app) {
  */
 $app->router->post("dice/play", function () use ($app) {
     //Incoming variables.
+    $score = $app->request->getPost("currentScore");
+    $current = $app->session->get("current");
+    $current->currentScore = $score;
+    $app->session->set("current", $current);
+
+    return $app->response->redirect("dice/play");
+});
+
+
+/**
+ * Change players
+ */
+$app->router->post("dice/change", function () use ($app) {
+    //Incoming variables.
+    $score = $app->request->getPost("currentScore");
+    $current = $app->session->get("current");
+    $next = $app->session->get("next");
+    $current->currentScore = 0;
+    $current->totalScore += $score;
+    $app->session->set("next", $current);
+    $app->session->set("current", $next);
 
     return $app->response->redirect("dice/play");
 });
