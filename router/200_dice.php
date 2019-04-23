@@ -11,8 +11,10 @@
  */
 $app->router->get("dice/init", function () use ($app) {
     // Init the game;
-    $object = new Elpr\Dice\Dice();
-    $_SESSION["object"] = serialize($object);
+    $playerOne = new Elpr\Dice\Player("Player 1");
+    $playerTwo = new Elpr\Dice\Player("Computer");
+    $app->session->set("current", $playerOne);
+    $app->session->set("next", $playerTwo);
 
     return $app->response->redirect("dice/play");
 });
