@@ -14,10 +14,14 @@ class Player
      * @var string  $name   The name of the person.
      * @var integer $currentScore    Current score of the raund.
      * @var integer $totalScore    Total score of the game.
+     * @var Dice $dice Dice object.
+     * @var integer $dice Sum from current roll.
      */
     public $name;
     public $currentScore;
     public $totalScore;
+    private $dice;
+    public $sum;
 
 
 
@@ -32,7 +36,7 @@ class Player
         $this->name = $name;
         $this->currentScore = 0;
         $this->totalScore = 0;
-        $dice = new \Elpr\Dice\DiceHand();
+        $this->dice = new \Elpr\Dice\DiceHand();
     }
 
     /**
@@ -54,13 +58,13 @@ class Player
 
     public function throwDice()
     {
-        $dice->roll();
-        $sum = $dice->sum();
-        if ($sum === -1) {
+        $this->dice->roll();
+        $this->sum = $this->dice->sum();
+        if ($this->sum === -1) {
             $this->currentScore = 0;
             return false;
         }
-        $this->currentScore += $sum;
+        $this->currentScore += $this->sum;
         return true;
     }
 
@@ -72,8 +76,31 @@ class Player
 
     public function saveScore()
     {
-        $this->totalScore = $this->currentScore = 0;
+        $this->totalScore += $this->currentScore;
     }
+
+
+    /**
+     * Returns the css class names from the dice object..
+     *
+     * @return array with classnames for each dice.
+     */
+    public function getClassNames()
+    {
+        return $this->dice->getClassNames();
+    }
+
+    /**
+     * Get values of dices from last roll.
+     *
+     * @return array with values of the last roll.
+     */
+    public function values()
+    {
+        return $this->dice->values();
+    }
+
+
 
 
 

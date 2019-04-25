@@ -24,23 +24,21 @@ $totalScore = $current->totalScore;
     <h1><?= $current->name ?> rolling dices</h1>
 
     <p>
-    <?php foreach ($dice->getClassNames() as $value) : ?>
+    <?php foreach ($current->getClassNames() as $value) : ?>
         <i class="dice-sprite <?= $value ?>"></i>
     <?php endforeach; ?>
     </p>
 
-    <p><?= implode(", ", $dice->values()) ?></p>
+    <p><?= implode(", ", $current->values()) ?></p>
     <form class="" action="play" method="post">
-        <?php if ($sum == -1) : ?>
-            <p>You lost all the score!!!</p>
-            <input type="number" name="currentScore" value=0 hidden="true">
-            <button type="submit" formaction="change">Change player</button>
-        <?php else : ?>
-            <p>Sum is: <?= $sum ?>.</p>
-            <p>Current sum is: <?= $sum + $currentScore ?></p>
-            <input type="number" name="currentScore" value=<?= $sum+$currentScore ?> hidden="true">
+        <?php if ($canPlayAgain) : ?>
+            <p>Sum is: <?= $current->sum ?>.</p>
+            <p>Current sum is: <?= $currentScore ?></p>
             <button type="submit" formaction="change">Save score</button>
             <button type="submit" formaction="play">Roll again</button>
+        <?php else : ?>
+            <p>You lost all the score!!!</p>
+            <button type="submit" formaction="change">Change player</button>
         <?php endif; ?>
     </form>
     <p>Total score: <?= $totalScore ?></p>

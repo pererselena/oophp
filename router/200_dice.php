@@ -30,10 +30,12 @@ $app->router->get("dice/play", function () use ($app) {
     $current = $app->session->get("current");
     $next = $app->session->get("next");
 
-    $current->throwDice();
+    $canPlayAgain = $current->throwDice();
+
     $data = [
         "current" => $current,
-        "next" => $next
+        "next" => $next,
+        "canPlayAgain" => $canPlayAgain
     ];
 
     $app->page->add("dice/play", $data);
