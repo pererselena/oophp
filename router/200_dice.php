@@ -25,10 +25,12 @@ $app->router->get("dice/init", function () use ($app) {
  * Play the game - show game status
  */
 $app->router->get("dice/play", function () use ($app) {
+    //Incoming variables.
     $title = "Play the game!";
     $current = $app->session->get("current");
     $next = $app->session->get("next");
-    //Incoming variables.
+
+    $current->throwDice();
     $data = [
         "current" => $current,
         "next" => $next
@@ -47,9 +49,9 @@ $app->router->get("dice/play", function () use ($app) {
  */
 $app->router->post("dice/play", function () use ($app) {
     //Incoming variables.
-    $score = $app->request->getPost("currentScore");
+    //$score = $app->request->getPost("currentScore");
     $current = $app->session->get("current");
-    $current->currentScore = $score;
+    //$current->currentScore = $score;
     $app->session->set("current", $current);
 
     return $app->response->redirect("dice/play");
@@ -61,11 +63,12 @@ $app->router->post("dice/play", function () use ($app) {
  */
 $app->router->post("dice/change", function () use ($app) {
     //Incoming variables.
-    $score = $app->request->getPost("currentScore");
+    //$score = $app->request->getPost("currentScore");
     $current = $app->session->get("current");
     $next = $app->session->get("next");
-    $current->currentScore = 0;
-    $current->totalScore += $score;
+    //$current->currentScore = 0;
+    //$current->totalScore += $score;
+    $current->saveScore();
     $app->session->set("next", $current);
     $app->session->set("current", $next);
 
