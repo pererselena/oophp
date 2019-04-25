@@ -32,6 +32,7 @@ class Player
         $this->name = $name;
         $this->currentScore = 0;
         $this->totalScore = 0;
+        $dice = new \Elpr\Dice\DiceHand();
     }
 
     /**
@@ -44,5 +45,27 @@ class Player
     {
         return 100 < $this->currentScore + $this->totalScore;
     }
+
+    /**
+     * Throw all dices by calling roll in dice object.
+     *
+     * @return bool Returns true if the player can continue to play.
+     */
+
+    public function throwDice()
+    {
+        $dice->roll();
+        $sum = $dice->sum();
+        if ($sum === -1) {
+            $this->currentScore = 0;
+            return false;
+        }
+        $this->currentScore += $sum;
+        return true;
+    }
+
+
+
+
 
 }
