@@ -34,4 +34,15 @@ class Player
         $this->totalScore = 0;
     }
 
+    /**
+     * Returns true if the player won the game.
+     *
+     * @return bool Return true if score is 100.
+     */
+
+    public function hasWon()
+    {
+        return 100 < $this->currentScore + $this->totalScore;
+    }
+
 }
