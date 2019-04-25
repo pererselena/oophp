@@ -23,6 +23,16 @@ $totalScore = $current->totalScore;
 ?><main>
     <?php if ($current->hasWon()): ?>
         <h1><?= $current->name ?> has won!!!</h1>
+        <?php foreach ($current->getClassNames() as $value) : ?>
+            <i class="dice-sprite <?= $value ?>"></i>
+        <?php endforeach; ?>
+        <p><?= implode(", ", $current->values()) ?></p>
+
+        <p>Total score: <?= $totalScore + $currentScore ?></p>
+
+        <form class="" action="init" method="get">
+            <button type="submit" formaction="init">Play again</button>
+        </form>
     <?php else : ?>
         <h1><?= $current->name ?> rolling dices</h1>
 
