@@ -21,27 +21,31 @@ $totalScore = $current->totalScore;
 // }
 
 ?><main>
-    <h1><?= $current->name ?> rolling dices</h1>
+    <?php if ($current->hasWon()): ?>
+        <h1><?= $current->name ?> has won!!!</h1>
+    <?php else : ?>
+        <h1><?= $current->name ?> rolling dices</h1>
 
-    <p>
-    <?php foreach ($current->getClassNames() as $value) : ?>
-        <i class="dice-sprite <?= $value ?>"></i>
-    <?php endforeach; ?>
-    </p>
+        <p>
+        <?php foreach ($current->getClassNames() as $value) : ?>
+            <i class="dice-sprite <?= $value ?>"></i>
+        <?php endforeach; ?>
+        </p>
 
-    <p><?= implode(", ", $current->values()) ?></p>
-    <form class="" action="play" method="post">
-        <?php if ($canPlayAgain) : ?>
-            <p>Sum is: <?= $current->sum ?>.</p>
-            <p>Current sum is: <?= $currentScore ?></p>
-            <button type="submit" formaction="change">Save score</button>
-            <button type="submit" formaction="play">Roll again</button>
-        <?php else : ?>
-            <p>You lost all the score!!!</p>
-            <button type="submit" formaction="change">Change player</button>
-        <?php endif; ?>
-    </form>
-    <p>Total score: <?= $totalScore ?></p>
+        <p><?= implode(", ", $current->values()) ?></p>
+        <form class="" action="play" method="post">
+            <?php if ($canPlayAgain) : ?>
+                <p>Sum is: <?= $current->sum ?>.</p>
+                <p>Current sum is: <?= $currentScore ?></p>
+                <button type="submit" formaction="change">Save score</button>
+                <button type="submit" formaction="play">Roll again</button>
+            <?php else : ?>
+                <p>You lost all the score!!!</p>
+                <button type="submit" formaction="change">Change player</button>
+            <?php endif; ?>
+        </form>
+        <p>Total score: <?= $totalScore ?></p>
+    <?php endif; ?>
 
 
 </main>
