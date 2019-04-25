@@ -64,6 +64,16 @@ class Player
         return true;
     }
 
+    /**
+     * Save the players currentScore to total score.
+     *
+     * @return void
+     */
+
+    public function saveScore()
+    {
+        $this->totalScore = $this->currentScore = 0;
+    }
 
 
 
