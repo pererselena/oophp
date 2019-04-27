@@ -65,6 +65,11 @@ class Player
             return false;
         }
         $this->currentScore += $this->sum;
+        if ($this->name === "Computer") {
+            if ($this->sum < 10) {
+                $this->throwDice();
+            }
+        }
         return true;
     }
 
