@@ -45,7 +45,7 @@ $cTotalScore = $game->computer->totalScore;
 
         <p><?= implode(", ", $game->player->values()) ?></p>
         <form class="" action="play" method="post">
-            <?php if ($game->player->canPlayAgain) : ?>
+            <?php if ($game->player->sum != -1) : ?>
                 <p>Sum is: <?= $game->player->sum ?>.</p>
                 <p>Current sum is: <?= $pCurrentScore ?></p>
                 <button type="submit" formaction="change">Save score</button>
@@ -67,7 +67,8 @@ $cTotalScore = $game->computer->totalScore;
 
         <p><?= implode(", ", $game->computer->values()) ?></p>
         <form class="" action="play" method="post">
-            <?php if ($game->computer->canPlayAgain) : ?>
+
+            <?php if ($game->computer->sum != -1) : ?>
                 <p>Sum is: <?= $game->computer->sum ?>.</p>
                 <p>Current sum is: <?= $cCurrentScore ?></p>
             <?php else : ?>

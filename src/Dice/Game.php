@@ -43,10 +43,10 @@ class Game
     public function playRound($roll)
     {
         if ($this->computer->hasWon()) {
-            $winner = $this->computer->name;
+            $this->winner = $this->computer->name;
             return false;
         } elseif ($this->player->hasWon()) {
-            $winner = $this->player->name;
+            $this->winner = $this->player->name;
             return false;
         } else {
             if ($roll === "roll") {
@@ -70,5 +70,6 @@ class Game
     public function computerRoll()
     {
         $this->computer->throwDice();
+        $this->computer->saveScore();
     }
 }
