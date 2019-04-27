@@ -70,7 +70,6 @@ $cTotalScore = $game->computer->totalScore;
 
             <?php if ($game->computer->sum != -1) : ?>
                 <p>Sum is: <?= $game->computer->sum ?>.</p>
-                <p>Current sum is: <?= $cCurrentScore ?></p>
             <?php else : ?>
                 <p>Computer lost all the score!!!</p>
             <?php endif; ?>

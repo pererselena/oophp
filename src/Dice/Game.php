@@ -51,7 +51,7 @@ class Game
         } else {
             if ($roll === "roll") {
                 if (! $this->player->throwDice()) {
-                    $this->computerRoll();
+                    //$this->computerRoll();
                 }
                 return true;
             }
