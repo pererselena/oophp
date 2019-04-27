@@ -35,15 +35,36 @@ class Game
     /**
      * Playes the current round.
      *
-     * @return void
+     * @return bool Returns false if game finished.
      */
 
     public function playRound($save)
     {
         if ($this->computer->hasWon()) {
             $winner = $this->computer->name;
+            return false;
         } elseif ($this->player->hasWon()) {
             $winner = $this->player->name;
+            return false;
+        } else {
+            if ($save === "roll") {
+                if (! $this->player->throwDice()) {
+                    $this->computerRoll();
+                }
+            }
+            $this->computerRoll();
         }
+        return true;
+    }
+
+    /**
+     * Logic to handle the computer playing.
+     *
+     * @return void
+     */
+
+    public function computerRoll()
+    {
+        $this->computer->throwDice();
     }
 }
