@@ -11,10 +11,8 @@
  */
 $app->router->get("dice/init", function () use ($app) {
     // Init the game;
-    $playerOne = new Elpr\Dice\Player("Player 1");
-    $playerTwo = new Elpr\Dice\Player("Computer");
-    $app->session->set("current", $playerOne);
-    $app->session->set("next", $playerTwo);
+    $game = new Elpr\Dice\Game();
+    $app->session->set("game", $game);
 
     return $app->response->redirect("dice/play");
 });
@@ -27,15 +25,13 @@ $app->router->get("dice/init", function () use ($app) {
 $app->router->get("dice/play", function () use ($app) {
     //Incoming variables.
     $title = "Play the game!";
-    $current = $app->session->get("current");
-    $next = $app->session->get("next");
+    $game = $app->session->get("game");
 
-    $canPlayAgain = $current->throwDice();
+    $haveWinner = $game->playRound();
 
     $data = [
-        "current" => $current,
-        "next" => $next,
-        "canPlayAgain" => $canPlayAgain
+        "game" => $game,
+        "haveWinner" => $haveWinner
     ];
 
     $app->page->add("dice/play", $data);
@@ -52,9 +48,9 @@ $app->router->get("dice/play", function () use ($app) {
 $app->router->post("dice/play", function () use ($app) {
     //Incoming variables.
     //$score = $app->request->getPost("currentScore");
-    $current = $app->session->get("current");
-    //$current->currentScore = $score;
-    $app->session->set("current", $current);
+    $game = $app->session->get("game");
+    //$game->currentScore = $score;
+    $app->session->set("game", $game);
 
     return $app->response->redirect("dice/play");
 });
@@ -66,13 +62,11 @@ $app->router->post("dice/play", function () use ($app) {
 $app->router->post("dice/change", function () use ($app) {
     //Incoming variables.
     //$score = $app->request->getPost("currentScore");
-    $current = $app->session->get("current");
-    $next = $app->session->get("next");
-    //$current->currentScore = 0;
-    //$current->totalScore += $score;
-    $current->saveScore();
-    $app->session->set("next", $current);
-    $app->session->set("current", $next);
+    $game = $app->session->get("game");
+    //$game->currentScore = 0;
+    //$game->totalScore += $score;
+    $game->saveScore();
+    $app->session->set("game", $next);
 
     return $app->response->redirect("dice/play");
 });

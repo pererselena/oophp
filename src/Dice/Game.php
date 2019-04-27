@@ -36,9 +36,11 @@ class Game
      * Playes the current round.
      *
      * @return bool Returns false if game finished.
+     * @param string $roll String holding information if the player want to
+     * roll igen or not.
      */
 
-    public function playRound($save)
+    public function playRound($roll)
     {
         if ($this->computer->hasWon()) {
             $winner = $this->computer->name;
@@ -47,11 +49,12 @@ class Game
             $winner = $this->player->name;
             return false;
         } else {
-            if ($save === "roll") {
+            if ($roll === "roll") {
                 if (! $this->player->throwDice()) {
                     $this->computerRoll();
                 }
             }
+            $this->player->saveScore();
             $this->computerRoll();
         }
         return true;
