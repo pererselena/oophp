@@ -53,6 +53,7 @@ class Game
                 if (! $this->player->throwDice()) {
                     $this->computerRoll();
                 }
+                return true;
             }
             $this->player->saveScore();
             $this->computerRoll();

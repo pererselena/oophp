@@ -11,8 +11,8 @@ namespace Anax\View;
 //$dice = new \Elpr\Dice\DiceHand();
 // $dice->roll();
 // $sum = $dice->sum();
-$currentScore = $current->currentScore;
-$totalScore = $current->totalScore;
+// $currentScore = $current->currentScore;
+// $totalScore = $current->totalScore;
 // $res = [];
 // $class = [];
 // for ($i = 0; $i < $rolls; $i++) {
@@ -20,42 +20,63 @@ $totalScore = $current->totalScore;
 //     $class[] = $dice->graphic();
 // }
 
-?><main>
-    <?php if ($current->hasWon()): ?>
-        <h1><?= $current->name ?> has won!!!</h1>
-        <?php foreach ($current->getClassNames() as $value) : ?>
-            <i class="dice-sprite <?= $value ?>"></i>
-        <?php endforeach; ?>
-        <p><?= implode(", ", $current->values()) ?></p>
+$pCurrentScore = $game->player->currentScore;
+$pTotalScore = $game->player->totalScore;
+$cCurrentScore = $game->computer->currentScore;
+$cTotalScore = $game->computer->totalScore;
 
-        <p>Total score: <?= $totalScore + $currentScore ?></p>
+?><main>
+    <?php if (! $haveWinner): ?>
+        <h1><?= $game->winner ?> has won!!!</h1>
+        <p>Player score: <?= $pTotalScore + $pCurrentScore ?></p>
+        <p>Computer score: <?= $cTotalScore + $cCurrentScore ?></p>
 
         <form class="" action="init" method="get">
             <button type="submit" formaction="init">Play again</button>
         </form>
     <?php else : ?>
-        <h1><?= $current->name ?> rolling dices</h1>
-
+        <h1>Rolling dices</h1>
+        <h2>Player rolls</h2>
         <p>
-        <?php foreach ($current->getClassNames() as $value) : ?>
+        <?php foreach ($game->player->getClassNames() as $value) : ?>
             <i class="dice-sprite <?= $value ?>"></i>
         <?php endforeach; ?>
         </p>
 
-        <p><?= implode(", ", $current->values()) ?></p>
+        <p><?= implode(", ", $game->player->values()) ?></p>
         <form class="" action="play" method="post">
-            <?php if ($canPlayAgain) : ?>
-                <p>Sum is: <?= $current->sum ?>.</p>
-                <p>Current sum is: <?= $currentScore ?></p>
+            <?php if ($game->player->canPlayAgain) : ?>
+                <p>Sum is: <?= $game->player->sum ?>.</p>
+                <p>Current sum is: <?= $pCurrentScore ?></p>
                 <button type="submit" formaction="change">Save score</button>
                 <button type="submit" formaction="play">Roll again</button>
             <?php else : ?>
                 <p>You lost all the score!!!</p>
-                <button type="submit" formaction="change">Change player</button>
+                <button type="submit" formaction="change">Roll again</button>
             <?php endif; ?>
         </form>
-        <p>Total score: <?= $totalScore ?></p>
+        <p>Total score: <?= $pTotalScore ?></p>
+
+
+        <h2>Computer rolls</h2>
+        <p>
+        <?php foreach ($game->computer->getClassNames() as $value) : ?>
+            <i class="dice-sprite <?= $value ?>"></i>
+        <?php endforeach; ?>
+        </p>
+
+        <p><?= implode(", ", $game->computer->values()) ?></p>
+        <form class="" action="play" method="post">
+            <?php if ($game->computer->canPlayAgain) : ?>
+                <p>Sum is: <?= $game->computer->sum ?>.</p>
+                <p>Current sum is: <?= $cCurrentScore ?></p>
+            <?php else : ?>
+                <p>Computer lost all the score!!!</p>
+            <?php endif; ?>
+        </form>
+        <p>Total score: <?= $cTotalScore ?></p>
     <?php endif; ?>
+
 
 
 </main>

@@ -16,12 +16,14 @@ class Player
      * @var integer $totalScore    Total score of the game.
      * @var Dice $dice Dice object.
      * @var integer $dice Sum from current roll.
+     * @var bool $canPlayAgain True if the player can roll again.
      */
     public $name;
     public $currentScore;
     public $totalScore;
     private $dice;
     public $sum;
+    public $canPlayAgain;
 
 
 
@@ -37,6 +39,7 @@ class Player
         $this->currentScore = 0;
         $this->totalScore = 0;
         $this->dice = new \Elpr\Dice\DiceHand();
+        $this->canPlayAgain = true;
     }
 
     /**
@@ -62,6 +65,7 @@ class Player
         $this->sum = $this->dice->sum();
         if ($this->sum === -1) {
             $this->currentScore = 0;
+            $this->canPlayAgain = false;
             return false;
         }
         $this->currentScore += $this->sum;
@@ -70,6 +74,7 @@ class Player
                 $this->throwDice();
             }
         }
+        $this->canPlayAgain = true;
         return true;
     }
 
@@ -82,6 +87,8 @@ class Player
     public function saveScore()
     {
         $this->totalScore += $this->currentScore;
+        $this->currentScore = 0;
+        $this->canPlayAgain = true;
     }
 
 

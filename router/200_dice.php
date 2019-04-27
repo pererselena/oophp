@@ -66,7 +66,7 @@ $app->router->post("dice/change", function () use ($app) {
     //$game->currentScore = 0;
     //$game->totalScore += $score;
     $game->playRound("");
-    $app->session->set("game");
+    $app->session->set("game", $game);
 
     return $app->response->redirect("dice/play");
 });
