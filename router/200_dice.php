@@ -27,7 +27,7 @@ $app->router->get("dice/play", function () use ($app) {
     $title = "Play the game!";
     $game = $app->session->get("game");
 
-    $haveWinner = $game->playRound();
+    $haveWinner = $game->playRound("roll");
 
     $data = [
         "game" => $game,
@@ -65,8 +65,8 @@ $app->router->post("dice/change", function () use ($app) {
     $game = $app->session->get("game");
     //$game->currentScore = 0;
     //$game->totalScore += $score;
-    $game->saveScore();
-    $app->session->set("game", $next);
+    $game->playRound("");
+    $app->session->set("game");
 
     return $app->response->redirect("dice/play");
 });
