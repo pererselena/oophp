@@ -50,7 +50,7 @@ class Player
 
     public function hasWon()
     {
-        return 100 < $this->currentScore + $this->totalScore;
+        return 100 <= $this->currentScore + $this->totalScore;
     }
 
     /**
