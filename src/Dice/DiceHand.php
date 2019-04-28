@@ -77,14 +77,4 @@ class DiceHand
         }
         return array_sum($this->values);
     }
-
-    /**
-     * Get the average of all dices.
-     *
-     * @return float as the average of all dices.
-     */
-    public function average()
-    {
-        return array_sum($this->values) / count($this->values);
-    }
 }

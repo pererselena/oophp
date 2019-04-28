@@ -59,12 +59,4 @@ class Dice
         $this->lastRoll = rand(1, $this->sides);
         return $this->lastRoll;
     }
-
-    public function dice()
-    {
-        while ($this->tries <= 6) {
-            $this->numbers[$this->tries] = $this->roll();
-            $this->tries ++;
-        }
-    }
 }

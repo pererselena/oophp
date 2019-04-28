@@ -26,7 +26,7 @@ $cCurrentScore = $game->computer->currentScore;
 $cTotalScore = $game->computer->totalScore;
 
 ?><main>
-    <?php if (! $haveWinner): ?>
+    <?php if (! $haveWinner) : ?>
         <h1><?= $game->winner ?> has won!!!</h1>
         <p>Player score: <?= $pTotalScore + $pCurrentScore ?></p>
         <p>Computer score: <?= $cTotalScore + $cCurrentScore ?></p>

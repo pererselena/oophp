@@ -106,10 +106,4 @@ class Player
     {
         return $this->dice->values();
     }
-
-
-
-
-
-
 }
