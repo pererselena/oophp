@@ -108,14 +108,27 @@ class DiceTest extends TestCase
 
         $dice2 = new Dice(2);
         $res = $dice2->sides;
-        $min = 0;
-        $max = 3;
+        $min = 1;
+        $max = 2;
         $this->assertThat(
             $res,
             $this->logicalAnd(
-                $this->greaterThan($min),
-                $this->lessThan($max)
+                $this->greaterThanOrEqual($min),
+                $this->lessThanOrEqual($max)
             )
         );
+    }
+
+    /**
+     * Testing roll method fail.
+     */
+    public function testFailRoll()
+    {
+        $dice = new Dice(1);
+        $this->assertInstanceOf("\Elpr\Dice\Dice", $dice);
+
+        $res = $dice->roll();
+        $exp = 2;
+        $this->assertNotEquals($exp, $res);
     }
 }
