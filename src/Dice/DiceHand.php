@@ -40,7 +40,7 @@ class DiceHand
     {
         $counter = 0;
         foreach ($this->dices as $dice) {
-            $this->values[$counter] = $dice->roll();
+            $this->addValues($dice->roll(), $counter);
             $this->classNames[$counter] = $dice->graphic();
             $counter ++;
         }
@@ -73,8 +73,18 @@ class DiceHand
     public function sum()
     {
         if (in_array(1, $this->values)) {
-            return - 1;
+            return -1;
         }
         return array_sum($this->values);
+    }
+
+    /**
+     * Method to sett roll result.
+     *
+     * @return void
+     */
+    public function addValues($value, $index)
+    {
+        $this->values[$index] = $value;
     }
 }
