@@ -18,10 +18,6 @@ class DiceTest extends TestCase
         $dice = new Dice();
         $this->assertInstanceOf("\Elpr\Dice\Dice", $dice);
 
-        $res = $dice->tries;
-        $exp = 1;
-        $this->assertEquals($exp, $res);
-
         $res = $dice->sides;
         $exp = 6;
         $this->assertEquals($exp, $res);
@@ -38,32 +34,8 @@ class DiceTest extends TestCase
         $dice = new Dice(5);
         $this->assertInstanceOf("\Elpr\Dice\Dice", $dice);
 
-        $res = $dice->tries;
-        $exp = 1;
-        $this->assertEquals($exp, $res);
-
         $res = $dice->sides;
         $exp = 5;
-        $this->assertEquals($exp, $res);
-    }
-
-
-
-    /**
-     * Construct object and verify that the object has the expected
-     * properties. Use both arguments.
-     */
-    public function testCreateObjectBothArguments()
-    {
-        $dice = new Dice(4, 2);
-        $this->assertInstanceOf("\Elpr\Dice\Dice", $dice);
-
-        $res = $dice->tries;
-        $exp = 2;
-        $this->assertEquals($exp, $res);
-
-        $res = $dice->sides;
-        $exp = 4;
         $this->assertEquals($exp, $res);
     }
 

@@ -18,10 +18,6 @@ class DiceGraphicTest extends TestCase
         $dice = new DiceGraphic();
         $this->assertInstanceOf("\Elpr\Dice\DiceGraphic", $dice);
 
-        $res = $dice->tries;
-        $exp = 1;
-        $this->assertEquals($exp, $res);
-
         $res = $dice->sides;
         $exp = 6;
         $this->assertEquals($exp, $res);

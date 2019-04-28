@@ -11,29 +11,24 @@ namespace Elpr\Dice;
 class Dice
 {
     /**
-     * @var string  $number   The name of the person.
-     * @var integer $tries    The tries of the person.
+     * @var int  $sides   Number of sides of the dice.
+     * @var int $lastRoll  Holds the result of the last roll.
      */
-    public $numbers;
-    public $tries;
+
     public $sides;
     private $lastRoll;
 
 
     /**
      * Constructor to initiate the object with current game settings,
-     * if available. Randomize the current number if no value is sent in.
+     * if available.
      *
-     * @param int $number The current secret number, default -1 to initiate
-     *                    the number from start.
-     * @param int $tries  Number of tries a guess has been made,
-     *                    default 6.
+     * @param int $sides The number of sides of the dice, default 6.
+     *
      */
 
-    public function __construct(int $sides = 6, int $tries = 1)
+    public function __construct(int $sides = 6)
     {
-        $this->numbers = array();
-        $this->tries = $tries;
         $this->sides = $sides;
     }
 
@@ -49,7 +44,7 @@ class Dice
     }
 
     /**
-     * Randomize the secret number between 1 and 100 to initiate a new game.
+     * Perform the roll of the dice.
      *
      * @return int
      */

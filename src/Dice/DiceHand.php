@@ -6,7 +6,7 @@
 class DiceHand
 {
     /**
-     * @var Dice $dices   Array consisting of dices.
+     * @var array $dices   Array consisting of dices.
      * @var int  $values  Array consisting of last roll of the dices.
      * @var string $classNames Array with classnames for CSS for each dice.
      */

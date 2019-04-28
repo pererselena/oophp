@@ -14,7 +14,7 @@ class Player
      * @var string  $name   The name of the person.
      * @var integer $currentScore    Current score of the raund.
      * @var integer $totalScore    Total score of the game.
-     * @var Dice $dice Dice object.
+     * @var DiceHand $dice Dice object.
      * @var integer $dice Sum from current roll.
      * @var bool $canPlayAgain True if the player can roll again.
      */
