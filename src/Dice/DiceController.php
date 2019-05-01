@@ -54,12 +54,16 @@ class DiceController implements AppInjectableInterface
      * ANY METHOD mountpoint/
      * ANY METHOD mountpoint/index
      *
-     * @return string
+     * @return object as page
      */
-    public function indexAction() : string
+    public function indexAction() : object
     {
         // Deal with the action and return a response.
-        return "Index!";
+        $this->app->page->add("dice/index");
+        $title = "Dice 100";
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
     }
 
     /**
@@ -72,7 +76,7 @@ class DiceController implements AppInjectableInterface
         $game = new Game();
         $this->app->session->set("game", $game);
 
-        return $this->app->response->redirect("dice1/play");
+        return $this->app->response->redirect("dice/play");
     }
 
     /**
@@ -81,7 +85,7 @@ class DiceController implements AppInjectableInterface
      *
      * @return object As page
      */
-    public function playAction() : object
+    public function playActionGet() : object
     {
         $title = "Play the game!";
         $game = $this->app->session->get("game");
@@ -93,7 +97,7 @@ class DiceController implements AppInjectableInterface
             "haveWinner" => $haveWinner
         ];
 
-        $this->app->page->add("dice1/play", $data);
+        $this->app->page->add("dice/play", $data);
         return $this->app->page->render([
             "title" => $title,
         ]);
@@ -117,7 +121,7 @@ class DiceController implements AppInjectableInterface
             "haveWinner" => $haveWinner
         ];
 
-        $this->app->page->add("dice1/play", $data);
+        $this->app->page->add("dice/play", $data);
         return $this->app->page->render([
             "title" => $title,
         ]);
@@ -135,7 +139,7 @@ class DiceController implements AppInjectableInterface
         $game->playRound("");
         $this->app->session->set("game", $game);
 
-        return $this->app->response->redirect("dice1/play");
+        return $this->app->response->redirect("dice/play");
     }
 
 

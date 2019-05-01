@@ -7,7 +7,7 @@ return [
     "routes" => [
         [
             "info" => "Dice controller.",
-            "mount" => "dice1",
+            "mount" => "dice",
             "handler" => "\Elpr\Dice\DiceController",
         ],
     ]
