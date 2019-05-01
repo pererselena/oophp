@@ -129,7 +129,7 @@ class DiceController implements AppInjectableInterface
      *
      * @return object as response
      */
-    public function ChangeActionPost() : object
+    public function changeActionPost() : object
     {
         $game = $this->app->session->get("game");
         $game->playRound("");
