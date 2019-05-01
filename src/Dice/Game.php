@@ -72,7 +72,7 @@ class Game
         $this->computer->throwDice();
         if ($this->computer->canPlayAgain) {
             if ($this->player->totalScore > ($this->computer->totalScore +
-                $this->computer->currentScore)) {
+                $this->computer->currentScore + 30)) {
                 $this->computer->throwDice();
             }
         }
