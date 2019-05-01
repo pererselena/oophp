@@ -70,6 +70,12 @@ class Game
     public function computerRoll()
     {
         $this->computer->throwDice();
+        if ($this->computer->canPlayAgain) {
+            if ($this->player->totalScore > ($this->computer->totalScore +
+                $this->computer->currentScore)) {
+                $this->computer->throwDice();
+            }
+        }
         $this->computer->saveScore();
     }
 }
