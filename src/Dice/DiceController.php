@@ -59,7 +59,83 @@ class DiceController implements AppInjectableInterface
     public function indexAction() : string
     {
         // Deal with the action and return a response.
-        return __METHOD__ . ", \$db is {$this->db}";
+        return "Index!";
+    }
+
+    /**
+     * Init the game and resirect to play the game.:
+     *
+     * @return object as a response
+     */
+    public function initAction() : object
+    {
+        $game = new Game();
+        $this->app->session->set("game", $game);
+
+        return $this->app->response->redirect("dice1/play");
+    }
+
+    /**
+     * Play the game - show game status.:
+     *
+     *
+     * @return object As page
+     */
+    public function playAction() : object
+    {
+        $title = "Play the game!";
+        $game = $this->app->session->get("game");
+
+        $haveWinner = $game->playRound("roll");
+
+        $data = [
+            "game" => $game,
+            "haveWinner" => $haveWinner
+        ];
+
+        $this->app->page->add("dice1/play", $data);
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
+    }
+
+    /**
+     * Play the game - make a guess.:
+     *
+     *
+     * @return object AS page
+     */
+    public function playActionPost() : object
+    {
+        $title = "Play the game!";
+        $game = $this->app->session->get("game");
+
+        $haveWinner = $game->playRound("roll");
+
+        $data = [
+            "game" => $game,
+            "haveWinner" => $haveWinner
+        ];
+
+        $this->app->page->add("dice1/play", $data);
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
+    }
+
+    /**
+     * Change players.:
+     *
+     *
+     * @return object as response
+     */
+    public function ChangeActionPost() : object
+    {
+        $game = $this->app->session->get("game");
+        $game->playRound("");
+        $this->app->session->set("game", $game);
+
+        return $this->app->response->redirect("dice1/play");
     }
 
 
