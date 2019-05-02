@@ -58,9 +58,8 @@ $cTotalScore = $game->computer->totalScore;
         <p>Total score: <?= $pTotalScore ?></p>
         <h3>Display a histogram for the player</h1>
 
-        <p><?= implode(", ", $histogramPlayer->getSerie()) ?></p>
         <pre><?= $histogramPlayer->getAsText() ?></pre>
-    
+
 
         <h2>Computer rolls</h2>
         <p>
@@ -83,7 +82,6 @@ $cTotalScore = $game->computer->totalScore;
 
     <h3>Display a histogram for the computer</h1>
 
-    <p><?= implode(", ", $histogramComputer->getSerie()) ?></p>
     <pre><?= $histogramComputer->getAsText() ?></pre>
 
 
