@@ -74,7 +74,12 @@ class DiceController implements AppInjectableInterface
     public function initAction() : object
     {
         $game = new Game();
+        $histogramPlayer = new Histogram();
+        $histogramPlayer->injectData($game->player->dice);
+        $histogramComputer = new Histogram();
+        $histogramComputer->injectData($game->computer->dice);
         $this->app->session->set("game", $game);
+
 
         return $this->app->response->redirect("dice/play");
     }
@@ -89,12 +94,17 @@ class DiceController implements AppInjectableInterface
     {
         $title = "Play the game!";
         $game = $this->app->session->get("game");
-
         $haveWinner = $game->playRound("roll");
+        $histogramPlayer = new Histogram();
+        $histogramPlayer->injectData($game->player->dice);
+        $histogramComputer = new Histogram();
+        $histogramComputer->injectData($game->computer->dice);
 
         $data = [
             "game" => $game,
-            "haveWinner" => $haveWinner
+            "haveWinner" => $haveWinner,
+            "histogramPlayer" => $histogramPlayer,
+            "histogramComputer" => $histogramComputer
         ];
 
         $this->app->page->add("dice/play", $data);
@@ -113,12 +123,17 @@ class DiceController implements AppInjectableInterface
     {
         $title = "Play the game!";
         $game = $this->app->session->get("game");
-
         $haveWinner = $game->playRound("roll");
+        $histogramPlayer = new Histogram();
+        $histogramPlayer->injectData($game->player->dice);
+        $histogramComputer = new Histogram();
+        $histogramComputer->injectData($game->computer->dice);
 
         $data = [
             "game" => $game,
-            "haveWinner" => $haveWinner
+            "haveWinner" => $haveWinner,
+            "histogramPlayer" => $histogramPlayer,
+            "histogramComputer" => $histogramComputer
         ];
 
         $this->app->page->add("dice/play", $data);
@@ -141,8 +156,4 @@ class DiceController implements AppInjectableInterface
 
         return $this->app->response->redirect("dice/play");
     }
-
-
-
-
 }

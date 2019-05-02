@@ -11,7 +11,7 @@ class DiceHand
      * @var string $classNames Array with classnames for CSS for each dice.
      */
     private $dices;
-    private $values;
+    public $values;
     private $classNames;
 
     /**

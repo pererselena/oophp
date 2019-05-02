@@ -19,6 +19,16 @@ class DiceGraphic extends Dice
     }
 
     /**
+     * Get max value for the histogram.
+     *
+     * @return int with the max value.
+     */
+    public function getHistogramMax()
+    {
+        return $this->sides;
+    }
+
+    /**
      * Get a graphic value of the last rolled dice.
      *
      * @return string as graphical representation of last rolled dice.

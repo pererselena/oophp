@@ -21,10 +21,9 @@ class Player
     public $name;
     public $currentScore;
     public $totalScore;
-    private $dice;
+    public $dice;
     public $sum;
     public $canPlayAgain;
-
 
 
     /**
@@ -38,7 +37,7 @@ class Player
         $this->name = $name;
         $this->currentScore = 0;
         $this->totalScore = 0;
-        $this->dice = new \Elpr\Dice\DiceHand();
+        $this->dice = new DiceHandHistogram();
         $this->canPlayAgain = true;
     }
 
