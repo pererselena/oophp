@@ -78,12 +78,8 @@ $cTotalScore = $game->computer->totalScore;
             <?php endif; ?>
         </form>
         <p>Total score: <?= $cTotalScore ?></p>
+        <h3>Display a histogram for the computer</h1>
+
+        <pre><?= $histogramComputer->getAsText() ?></pre>
     <?php endif; ?>
-
-    <h3>Display a histogram for the computer</h1>
-
-    <pre><?= $histogramComputer->getAsText() ?></pre>
-
-
-
 </main>
