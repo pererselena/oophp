@@ -71,7 +71,15 @@ class GameTest extends TestCase
         $res = $game->computer->canPlayAgain;
         $exp = true;
         $this->assertEquals($exp, $res);
+        $game->player->totalScore = 90;
+        $game->player->currentScore = 1;
 
+        $game->computerRoll();
+        $res2 = $game->computer->currentScore;
+        $exp = 0;
+        $this->assertEquals($exp, $res2);
+
+        $game->computerRoll();
         $res2 = $game->computer->currentScore;
         $exp = 0;
         $this->assertEquals($exp, $res2);
