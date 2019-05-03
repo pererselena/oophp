@@ -60,6 +60,4 @@ class Histogram
         }
         return $output;
     }
-
-
 }
