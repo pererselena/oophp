@@ -56,4 +56,16 @@ class DiceGraphicTest extends TestCase
         $res = $dice->graphic();
         $this->assertStringStartsWith("dice-", $res);
     }
+
+    /**
+     * Testing getHistogramMax method.
+     */
+    public function testGetHistogramMax()
+    {
+        $dice = new DiceGraphic();
+        $this->assertInstanceOf("\Elpr\Dice\DiceGraphic", $dice);
+
+        $res = $dice->getHistogramMax();
+        $this->assertEquals(6, $res);
+    }
 }
