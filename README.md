@@ -5,6 +5,9 @@ Det här är min redovisningssida för kursen objektorienterad PHP vid BTH.
 
 Version history
 ---------------
+## v4.0.0 (2019-05-03)
+* Kmom04. Updated dice game.
+
 ## v3.0.0 (2019-04-28)
 * Kmom03. Added dice game.
 
