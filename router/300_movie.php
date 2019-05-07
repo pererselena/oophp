@@ -17,7 +17,7 @@ $app->router->get("movie", function () use ($app) {
     $res = $app->db->executeFetchAll($sql);
 
     $app->page->add("movie/index", [
-        "res" => $res,
+        "resultset" => $res,
     ]);
 
     return $app->page->render([
