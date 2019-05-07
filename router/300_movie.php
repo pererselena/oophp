@@ -13,7 +13,7 @@ $app->router->get("movie", function () use ($app) {
     $title = "Movie database | oophp";
 
     $app->db->connect();
-    $sql = "SELECT * FROM movie;";
+    $sql = "SELECT * FROM kmom05_movie;";
     $res = $app->db->executeFetchAll($sql);
 
     $app->page->add("movie/index", [
