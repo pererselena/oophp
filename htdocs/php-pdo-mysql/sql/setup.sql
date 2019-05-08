@@ -7,14 +7,23 @@
 -- Create the database with a testuser
 --
 CREATE DATABASE IF NOT EXISTS elpr18;
-CREATE USER IF NOT EXISTS 'elpr18'@'%'
-    IDENTIFIED WITH mysql_native_password BY 'NJUJcEKR2Vq6'
-;
-
-GRANT ALL PRIVILEGES
-	ON elpr18.* 
-	TO 'elpr18'@'%';
+GRANT ALL ON oophp.* TO user@localhost IDENTIFIED BY "pass";
 USE elpr18;
+
+-- CREATE USER IF NOT EXISTS 'elpr18'@'%'
+--    IDENTIFIED WITH mysql_native_password BY 'NJUJcEKR2Vq6'
+-- ;
+-- CREATE USER IF NOT EXISTS 'user'@'localhost'
+--     IDENTIFIED WITH mysql_native_password BY 'pass'
+-- ;
+
+-- GRANT ALL PRIVILEGES
+-- 	ON elpr18.* 
+-- 	TO 'elpr18'@'%';
+-- GRANT ALL PRIVILEGES
+-- 	ON elpr18.* 
+-- 	TO 'user'@'localhost';
+-- USE elpr18;
 
 -- Ensure UTF8 as chacrter encoding within connection.
 SET NAMES utf8;
