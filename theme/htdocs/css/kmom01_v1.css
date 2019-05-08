@@ -5499,12 +5499,6 @@ input[type=number] {
 .dice-sprite.dice-6 {
   background-position: 0 0;
 }
-h1 {
-  border-bottom: 1px double #ccc;
-}
-main {
-  min-height: 10em;
-}
 table {
   border: 1px solid #ccc;
   padding: 0.5em;
@@ -5526,12 +5520,6 @@ td {
 img.thumb {
   max-width: 100px;
   max-height: 100px;
-}
-footer {
-  border-top: 1px solid #ccc;
-}
-footer a {
-  text-decoration: none;
 }
 /**
  * Base style to affect HTML elements on a general scale.
