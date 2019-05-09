@@ -1,6 +1,6 @@
 <?php
 
-namespace Elpr\Dice;
+namespace Elpr\Movie;
 
 use Anax\Commons\AppInjectableInterface;
 use Anax\Commons\AppInjectableTrait;
@@ -18,7 +18,7 @@ use Anax\Commons\AppInjectableTrait;
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-class DiceController implements AppInjectableInterface
+class MovieController implements AppInjectableInterface
 {
     use AppInjectableTrait;
 
@@ -58,9 +58,16 @@ class DiceController implements AppInjectableInterface
      */
     public function indexAction() : object
     {
-        // Deal with the action and return a response.
-        $this->app->page->add("dice/index");
-        $title = "Dice 100";
+        $title = "Movie database | oophp";
+
+        $this->app->db->connect();
+        $sql = "SELECT * FROM kmom05_movie;";
+        $resultset = $this->app->db->executeFetchAll($sql);
+
+        $this->app->page->add("movie/index", [
+            "resultset" => $resultset,
+        ]);
+
         return $this->app->page->render([
             "title" => $title,
         ]);

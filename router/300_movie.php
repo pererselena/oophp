@@ -9,21 +9,21 @@ $request = new \Anax\Request\Request();
 /**
  * Show all movies.
  */
-$app->router->get("movie", function () use ($app) {
-    $title = "Movie database | oophp";
-
-    $app->db->connect();
-    $sql = "SELECT * FROM kmom05_movie;";
-    $resultset = $app->db->executeFetchAll($sql);
-
-    $app->page->add("movie/index", [
-        "resultset" => $resultset,
-    ]);
-
-    return $app->page->render([
-        "title" => $title,
-    ]);
-});
+// $app->router->get("movie", function () use ($app) {
+//     $title = "Movie database | oophp";
+//
+//     $app->db->connect();
+//     $sql = "SELECT * FROM kmom05_movie;";
+//     $resultset = $app->db->executeFetchAll($sql);
+//
+//     $app->page->add("movie/index", [
+//         "resultset" => $resultset,
+//     ]);
+//
+//     return $app->page->render([
+//         "title" => $title,
+//     ]);
+// });
 
 
 /**
