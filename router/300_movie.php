@@ -14,10 +14,10 @@ $app->router->get("movie", function () use ($app) {
 
     $app->db->connect();
     $sql = "SELECT * FROM kmom05_movie;";
-    $res = $app->db->executeFetchAll($sql);
+    $resultset = $app->db->executeFetchAll($sql);
 
     $app->page->add("movie/index", [
-        "resultset" => $res,
+        "resultset" => $resultset,
     ]);
 
     return $app->page->render([
@@ -31,24 +31,42 @@ $app->router->get("movie", function () use ($app) {
  */
 
 $app->router->get("movie/search-title", function () use ($app) {
-    $title = "SELECT * WHERE title";
+    $title = "Serch movies | oophp";
 
-    $app->db->connect();
-    $searchTitle = $app->request->getGet("searchTitle");
-    $doSearch = $app->request->getGet("doSearch");
-    // if ($searchTitle) {
-        $sql = "SELECT * FROM kmom05_movie WHERE title LIKE ?;";
-        $resultset = $app->db->executeFetchAll($sql, ["%" . $searchTitle . "%"]);
-    // }
-
+    $searchTitle = $app->session->get("searchTitle");
+    //$doSearch = $app->session->get("doSearch");
+    $resultset = $app->session->get("resultset");
+    $app->session->set("resultset", null);
 
     $app->page->add("movie/search-title", [
         "resultset" => $resultset,
         "searchTitle" => $searchTitle,
-        "doSearch" => $doSearch,
+        //"doSearch" => $doSearch,
     ]);
 
     return $app->page->render([
         "title" => $title,
     ]);
+});
+
+$app->router->post("movie/search-title", function () use ($app) {
+
+    $app->db->connect();
+    $searchTitle = $app->request->getPost("searchTitle");
+    //$doSearch = $app->request->getPost("doSearch");
+    $sql = "SELECT * FROM kmom05_movie WHERE title LIKE ?;";
+    $resultset = $app->db->executeFetchAll($sql, ["%" . $searchTitle . "%"]);
+
+    $app->session->set("resultset", $resultset);
+        //die();
+    // $app->page->add("movie/search-title", [
+    //     "resultset" => $resultset,
+    //     "searchTitle" => $searchTitle,
+    //     "doSearch" => $doSearch,
+    // ]);
+    //
+    // return $app->page->render([
+    //     "title" => $title,
+    // ]);
+    return $app->response->redirect("movie/search-title");
 });

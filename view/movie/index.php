@@ -6,6 +6,9 @@ if (!$resultset) {
     return;
 }
 ?>
+<p>
+    <a href="movie/search-title">Search movis</a>
+</p>
 
 <table>
     <tr class="first">
@@ -20,7 +23,7 @@ if (!$resultset) {
     <tr>
         <td><?= $id ?></td>
         <td><?= $row->id ?></td>
-        <td><img class="thumb" src="../<?= $row->image ?>"></td>
+        <td><img class="thumb" src="<?= $row->image ?>"></td>
         <td><?= $row->title ?></td>
         <td><?= $row->year ?></td>
     </tr>
