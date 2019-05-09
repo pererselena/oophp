@@ -133,11 +133,11 @@ $app->router->post("movie/search-year", function () use ($app) {
 //
 
 /**
- * CRUD.
+ * CRUD - edit.
  */
 
 $app->router->get("movie/edit", function () use ($app) {
-    $title = "Select movies | oophp";
+    $title = "Edit movies | oophp";
 
     $movieId = $app->request->getGet("movieId");
     $sql = "SELECT * FROM kmom05_movie WHERE id = ?;";
@@ -163,6 +163,43 @@ $app->router->post("movie/edit", function () use ($app) {
 
     $sql = "UPDATE kmom05_movie SET title = ?, year = ?, image = ? WHERE id = ?;";
     $app->db->execute($sql, [$title, $year, $image, $id]);
+
+
+    return $app->response->redirect("movie");
+});
+
+
+
+/**
+ * CRUD - delete.
+ */
+ $app->router->get("movie/delete", function () use ($app) {
+     $title = "Delete movies | oophp";
+
+     $movieId = $app->request->getGet("movieId");
+     $sql = "SELECT * FROM kmom05_movie WHERE id = ?;";
+     $app->db->connect();
+     $res = $app->db->executeFetch($sql, [$movieId]);
+
+     $app->page->add("movie/delete", [
+         "resultset" => $res,
+     ]);
+
+     return $app->page->render([
+         "title" => $title,
+     ]);
+ });
+
+
+$app->router->post("movie/delete", function () use ($app) {
+
+    $movieId = $app->request->getGet("movieId");
+
+    $app->db->connect();
+    $id = $app->request->getPost("id");
+    $sql = "DELETE FROM movie WHERE id = ?;";
+
+    $app->db->execute($sql, [$movieId]);
 
 
     return $app->response->redirect("movie");
