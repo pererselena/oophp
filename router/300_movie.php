@@ -197,9 +197,37 @@ $app->router->post("movie/delete", function () use ($app) {
 
     $app->db->connect();
     $id = $app->request->getPost("id");
-    $sql = "DELETE FROM movie WHERE id = ?;";
+    $sql = "DELETE FROM kmom05_movie WHERE id = ?;";
 
     $app->db->execute($sql, [$movieId]);
+
+
+    return $app->response->redirect("movie");
+});
+
+/**
+ * CRUD - Add.
+ */
+
+$app->router->get("movie/add", function () use ($app) {
+    $title = "Add movies | oophp";
+
+    $app->page->add("movie/add");
+
+    return $app->page->render([
+        "title" => $title,
+    ]);
+});
+
+$app->router->post("movie/add", function () use ($app) {
+
+    $app->db->connect();
+    $year = $app->request->getPost("year");
+    $title = $app->request->getPost("title");
+    $image = $app->request->getPost("image");
+
+    $sql = "INSERT INTO kmom05_movie (title, year, image) VALUES (?, ?, ?);";
+    $app->db->execute($sql, [$title, $year, $image]);
 
 
     return $app->response->redirect("movie");
