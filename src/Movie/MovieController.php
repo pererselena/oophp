@@ -246,7 +246,6 @@ class MovieController implements AppInjectableInterface
         $movieId = $this->app->request->getGet("movieId");
 
         $this->app->db->connect();
-        $id = $this->app->request->getPost("id");
         $sql = "DELETE FROM kmom05_movie WHERE id = ?;";
 
         $this->app->db->execute($sql, [$movieId]);

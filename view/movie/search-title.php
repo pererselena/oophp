@@ -1,4 +1,5 @@
 <?php namespace Anax\View;
+
 ?>
 
 <form class="search" method="post">
@@ -10,7 +11,7 @@
 
     <p><a href="../movie">Show all</a></p>
 </form>
-<?php if($resultset): ?>
+<?php if ($resultset) : ?>
     <table>
         <tr class="first">
             <th>Rad</th>

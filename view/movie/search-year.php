@@ -1,4 +1,5 @@
 <?php namespace Anax\View;
+
 ?>
 
 <form method="post">
@@ -19,7 +20,7 @@
     <p><a href="../movie">Show all</a></p>
     </fieldset>
 </form>
-<?php if($resultset): ?>
+<?php if ($resultset) : ?>
     <table>
         <tr class="first">
             <th>Rad</th>
