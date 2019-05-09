@@ -4,28 +4,28 @@
 <form method="post">
     <fieldset>
     <legend>Edit</legend>
-    <input type="hidden" name="id" value="<?= $resultset->id ?>"/>
+    <label>Id:</label><br>
+    <input disabled name="id" value="<?= $resultset->id ?>"/>
+    <br>
+
+    <label>Title:</label><br>
+    <input type="text" name="title" value="<?= $resultset->title ?>"/>
+    <br>
+
+
+    <label>Year:</label><br>
+    <input type="number" name="year" value="<?= $resultset->year ?>"/>
+    <br>
+
+
+    <label>Image:</label><br>
+    <input type="text" name="image" value="<?= $resultset->image ?>"/>
+    <br>
 
     <p>
-        <label>Title:<br>
-        <input type="text" name="title" value="<?= $resultset->title ?>"/>
-        </label>
+        <input class="buttons_input" type="submit" name="doSave" value="Save">
     </p>
-
-    <p>
-        <label>Year:<br>
-        <input type="number" name="year" value="<?= $resultset->year ?>"/>
-    </p>
-
-    <p>
-        <label>Image:<br>
-        <input type="text" name="image" value="<?= $resultset->image ?>"/>
-        </label>
-    </p>
-
-    <p>
-        <input type="submit" name="doSave" value="Save">
-    </p>
+    <br>
     <p>
         <a href="../movie">Show all</a>
     </p>

@@ -16,7 +16,9 @@
     <label>Image:</label><br>
     <input disabled type="text" name="image" value="<?= $resultset->image ?>"/>
     <br>
-    <input type="submit" name="doDelete" value="Delete"><br>
+    <p>
+        <input class="buttons_input" type="submit" name="doDelete" value="Delete"><br>
+    </p>
 
     <p>
         <a href="../movie">Show all</a>

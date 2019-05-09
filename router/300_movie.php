@@ -104,34 +104,6 @@ $app->router->post("movie/search-year", function () use ($app) {
 });
 
 
-
-
-
-
-// $movieId = getPost("movieId");
-//
-// if (getPost("doDelete")) {
-//     $sql = "DELETE FROM movie WHERE id = ?;";
-//     $db->execute($sql, [$movieId]);
-//     header("Location: ?route=movie-select");
-//     exit;
-// } elseif (getPost("doAdd")) {
-//     $sql = "INSERT INTO movie (title, year, image) VALUES (?, ?, ?);";
-//     $db->execute($sql, ["A title", 2017, "img/noimage.png"]);
-//     $movieId = $db->lastInsertId();
-//     header("Location: ?route=movie-edit&movieId=$movieId");
-//     exit;
-// } elseif (getPost("doEdit") && is_numeric($movieId)) {
-//     header("Location: ?route=movie-edit&movieId=$movieId");
-//     exit;
-// }
-//
-// $title = "Select a movie";
-// $view[] = "view/movie-select.php";
-// $sql = "SELECT id, title FROM movie;";
-// $movies = $db->executeFetchAll($sql);
-//
-
 /**
  * CRUD - edit.
  */

@@ -14,7 +14,9 @@
     <label>Image:</label><br>
     <input type="text" name="image"/>
     <br>
-    <input type="submit" name="doAdd" value="Add"><br>
+    <p>
+        <input class="buttons_input" type="submit" name="doAdd" value="Add"><br>
+    </p>
 
     <p>
         <a href="../movie">Show all</a>

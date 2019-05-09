@@ -2,10 +2,11 @@
 ?>
 
 <form class="search" method="post">
-    <input type="text" name="searchTitle" placeholder="Search title" value="<?= $searchTitle ?>"/>
+    <input type="text" name="searchTitle" placeholder="Search by title" value="<?= $searchTitle ?>"/>
     <br>
-
-    <input type="submit" name="doSearch" value="Search">
+    <p>
+        <input class="buttons_input" type="submit" name="doSearch" value="Search">
+    </p>
 
     <p><a href="../movie">Show all</a></p>
 </form>

@@ -13,7 +13,7 @@ namespace Anax\View;
     <h1>Guess my number</h1>
     <p>Guess a number between 1 and 100, you have <?= $object->tries() ?> left.</p>
 
-    <form method="post">
+    <form class="guess" method="post">
         <?php if ($object->tries() > 0) : ?>
             <input type="number" name="guess"><br>
             <input class="buttons_input" type="submit" name="doGuess" value="Make a guess">
