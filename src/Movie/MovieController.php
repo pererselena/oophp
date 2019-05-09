@@ -118,17 +118,53 @@ class MovieController implements AppInjectableInterface
     }
 
     /**
-     * Change players.:
+     * Play the game - show game status.:
      *
      *
-     * @return object as response
+     * @return object As page
      */
-    public function changeActionPost() : object
+    public function searchYearActionGet() : object
     {
-        $game = $this->app->session->get("game");
-        $game->playRound("");
-        $this->app->session->set("game", $game);
+        $title = "Serch movies | oophp";
 
-        return $this->app->response->redirect("dice/play");
+
+        $resultset = $this->app->session->get("resultset");
+        $this->app->session->set("resultset", null);
+
+        $this->app->page->add("movie/search-year", [
+            "resultset" => $resultset,
+        ]);
+
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
+    }
+
+    /**
+     * Play the game - make a guess.:
+     *
+     *
+     * @return object AS page
+     */
+    public function searchYearActionPost() : object
+    {
+        $this->app->db->connect();
+        $year1 = $this->app->request->getPost("year1");
+        $year2 = $this->app->request->getPost("year2");
+
+        if ($year1 && $year2) {
+            $sql = "SELECT * FROM kmom05_movie WHERE year >= ? AND year <= ?;";
+            $resultset = $this->app->db->executeFetchAll($sql, [$year1, $year2]);
+        } elseif ($year1) {
+            $sql = "SELECT * FROM kmom05_movie WHERE year >= ?;";
+            $resultset = $this->app->db->executeFetchAll($sql, [$year1]);
+        } elseif ($year2) {
+            $sql = "SELECT * FROM kmom05_movie WHERE year <= ?;";
+            $resultset = $this->app->db->executeFetchAll($sql, [$year2]);
+        }
+
+        $this->app->session->set("resultset", $resultset);
+
+        return $this->app->response->redirect("movie/search-year");
     }
 }

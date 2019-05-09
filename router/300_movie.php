@@ -65,43 +65,43 @@ $request = new \Anax\Request\Request();
  * Search by year.
  */
 
-$app->router->get("movie/search-year", function () use ($app) {
-    $title = "Serch movies | oophp";
-
-
-    $resultset = $app->session->get("resultset");
-    $app->session->set("resultset", null);
-
-    $app->page->add("movie/search-year", [
-        "resultset" => $resultset,
-    ]);
-
-    return $app->page->render([
-        "title" => $title,
-    ]);
-});
-
-$app->router->post("movie/search-year", function () use ($app) {
-
-    $app->db->connect();
-    $year1 = $app->request->getPost("year1");
-    $year2 = $app->request->getPost("year2");
-
-    if ($year1 && $year2) {
-        $sql = "SELECT * FROM kmom05_movie WHERE year >= ? AND year <= ?;";
-        $resultset = $app->db->executeFetchAll($sql, [$year1, $year2]);
-    } elseif ($year1) {
-        $sql = "SELECT * FROM kmom05_movie WHERE year >= ?;";
-        $resultset = $app->db->executeFetchAll($sql, [$year1]);
-    } elseif ($year2) {
-        $sql = "SELECT * FROM kmom05_movie WHERE year <= ?;";
-        $resultset = $app->db->executeFetchAll($sql, [$year2]);
-    }
-
-    $app->session->set("resultset", $resultset);
-
-    return $app->response->redirect("movie/search-year");
-});
+// $app->router->get("movie/search-year", function () use ($app) {
+//     $title = "Serch movies | oophp";
+//
+//
+//     $resultset = $app->session->get("resultset");
+//     $app->session->set("resultset", null);
+//
+//     $app->page->add("movie/search-year", [
+//         "resultset" => $resultset,
+//     ]);
+//
+//     return $app->page->render([
+//         "title" => $title,
+//     ]);
+// });
+//
+// $app->router->post("movie/search-year", function () use ($app) {
+//
+//     $app->db->connect();
+//     $year1 = $app->request->getPost("year1");
+//     $year2 = $app->request->getPost("year2");
+//
+//     if ($year1 && $year2) {
+//         $sql = "SELECT * FROM kmom05_movie WHERE year >= ? AND year <= ?;";
+//         $resultset = $app->db->executeFetchAll($sql, [$year1, $year2]);
+//     } elseif ($year1) {
+//         $sql = "SELECT * FROM kmom05_movie WHERE year >= ?;";
+//         $resultset = $app->db->executeFetchAll($sql, [$year1]);
+//     } elseif ($year2) {
+//         $sql = "SELECT * FROM kmom05_movie WHERE year <= ?;";
+//         $resultset = $app->db->executeFetchAll($sql, [$year2]);
+//     }
+//
+//     $app->session->set("resultset", $resultset);
+//
+//     return $app->response->redirect("movie/search-year");
+// });
 
 
 /**
