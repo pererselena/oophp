@@ -108,37 +108,37 @@ $request = new \Anax\Request\Request();
  * CRUD - edit.
  */
 
-$app->router->get("movie/edit", function () use ($app) {
-    $title = "Edit movies | oophp";
-
-    $movieId = $app->request->getGet("movieId");
-    $sql = "SELECT * FROM kmom05_movie WHERE id = ?;";
-    $app->db->connect();
-    $res = $app->db->executeFetch($sql, [$movieId]);
-
-    $app->page->add("movie/edit", [
-        "resultset" => $res,
-    ]);
-
-    return $app->page->render([
-        "title" => $title,
-    ]);
-});
-
-$app->router->post("movie/edit", function () use ($app) {
-
-    $app->db->connect();
-    $year = $app->request->getPost("year");
-    $title = $app->request->getPost("title");
-    $image = $app->request->getPost("image");
-    $id = $app->request->getPost("id");
-
-    $sql = "UPDATE kmom05_movie SET title = ?, year = ?, image = ? WHERE id = ?;";
-    $app->db->execute($sql, [$title, $year, $image, $id]);
-
-
-    return $app->response->redirect("movie");
-});
+// $app->router->get("movie/edit", function () use ($app) {
+//     $title = "Edit movies | oophp";
+//
+//     $movieId = $app->request->getGet("movieId");
+//     $sql = "SELECT * FROM kmom05_movie WHERE id = ?;";
+//     $app->db->connect();
+//     $res = $app->db->executeFetch($sql, [$movieId]);
+//
+//     $app->page->add("movie/edit", [
+//         "resultset" => $res,
+//     ]);
+//
+//     return $app->page->render([
+//         "title" => $title,
+//     ]);
+// });
+//
+// $app->router->post("movie/edit", function () use ($app) {
+//
+//     $app->db->connect();
+//     $year = $app->request->getPost("year");
+//     $title = $app->request->getPost("title");
+//     $image = $app->request->getPost("image");
+//     $id = $app->request->getPost("id");
+//
+//     $sql = "UPDATE kmom05_movie SET title = ?, year = ?, image = ? WHERE id = ?;";
+//     $app->db->execute($sql, [$title, $year, $image, $id]);
+//
+//
+//     return $app->response->redirect("movie");
+// });
 
 
 

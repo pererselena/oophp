@@ -167,4 +167,48 @@ class MovieController implements AppInjectableInterface
 
         return $this->app->response->redirect("movie/search-year");
     }
+    /**
+     * Play the game - show game status.:
+     *
+     *
+     * @return object As page
+     */
+    public function editActionGet() : object
+    {
+        $title = "Edit movies | oophp";
+
+        $movieId = $this->app->request->getGet("movieId");
+        $sql = "SELECT * FROM kmom05_movie WHERE id = ?;";
+        $this->app->db->connect();
+        $res = $this->app->db->executeFetch($sql, [$movieId]);
+
+        $this->app->page->add("movie/edit", [
+            "resultset" => $res,
+        ]);
+
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
+    }
+
+    /**
+     * Play the game - make a guess.:
+     *
+     *
+     * @return object AS page
+     */
+    public function editActionPost() : object
+    {
+        $this->app->db->connect();
+        $year = $this->app->request->getPost("year");
+        $title = $this->app->request->getPost("title");
+        $image = $this->app->request->getPost("image");
+        $id = $this->app->request->getPost("id");
+
+        $sql = "UPDATE kmom05_movie SET title = ?, year = ?, image = ? WHERE id = ?;";
+        $this->app->db->execute($sql, [$title, $year, $image, $id]);
+
+
+        return $this->app->response->redirect("movie");
+    }
 }
