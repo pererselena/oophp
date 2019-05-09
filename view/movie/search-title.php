@@ -3,7 +3,7 @@
 ?>
 
 <form class="search" method="post">
-    <input type="text" name="searchTitle" placeholder="Search by title" value="<?= $searchTitle ?>"/>
+    <input type="text" name="searchTitle" placeholder="Search by title" value="<?= htmlentities($searchTitle) ?>"/>
     <br>
     <p>
         <input class="buttons_input" type="submit" name="doSearch" value="Search">
