@@ -6,9 +6,9 @@
 --
 -- Create the database with a testuser
 --
-CREATE DATABASE IF NOT EXISTS elpr18;
- GRANT ALL ON elpr18.* TO user@localhost IDENTIFIED BY "pass";
- USE elpr18;
+-- CREATE DATABASE IF NOT EXISTS elpr18;
+--  GRANT ALL ON elpr18.* TO user@localhost IDENTIFIED BY "pass";
+--  USE elpr18;
 
 -- Ensure UTF8 as chacrter encoding within connection.
 SET NAMES utf8;
