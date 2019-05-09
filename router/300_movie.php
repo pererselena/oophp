@@ -30,35 +30,35 @@ $request = new \Anax\Request\Request();
  * Search by title.
  */
 
-$app->router->get("movie/search-title", function () use ($app) {
-    $title = "Serch movies | oophp";
-
-    $searchTitle = $app->session->get("searchTitle");
-    $resultset = $app->session->get("resultset");
-    $app->session->set("resultset", null);
-
-    $app->page->add("movie/search-title", [
-        "resultset" => $resultset,
-        "searchTitle" => $searchTitle,
-    ]);
-
-    return $app->page->render([
-        "title" => $title,
-    ]);
-});
-
-$app->router->post("movie/search-title", function () use ($app) {
-
-    $app->db->connect();
-    $searchTitle = $app->request->getPost("searchTitle");
-    //$doSearch = $app->request->getPost("doSearch");
-    $sql = "SELECT * FROM kmom05_movie WHERE title LIKE ?;";
-    $resultset = $app->db->executeFetchAll($sql, ["%" . $searchTitle . "%"]);
-
-    $app->session->set("resultset", $resultset);
-
-    return $app->response->redirect("movie/search-title");
-});
+// $app->router->get("movie/search-title", function () use ($app) {
+//     $title = "Serch movies | oophp";
+//
+//     $searchTitle = $app->session->get("searchTitle");
+//     $resultset = $app->session->get("resultset");
+//     $app->session->set("resultset", null);
+//
+//     $app->page->add("movie/search-title", [
+//         "resultset" => $resultset,
+//         "searchTitle" => $searchTitle,
+//     ]);
+//
+//     return $app->page->render([
+//         "title" => $title,
+//     ]);
+// });
+//
+// $app->router->post("movie/search-title", function () use ($app) {
+//
+//     $app->db->connect();
+//     $searchTitle = $app->request->getPost("searchTitle");
+//     //$doSearch = $app->request->getPost("doSearch");
+//     $sql = "SELECT * FROM kmom05_movie WHERE title LIKE ?;";
+//     $resultset = $app->db->executeFetchAll($sql, ["%" . $searchTitle . "%"]);
+//
+//     $app->session->set("resultset", $resultset);
+//
+//     return $app->response->redirect("movie/search-title");
+// });
 
 
 /**

@@ -73,23 +73,6 @@ class MovieController implements AppInjectableInterface
         ]);
     }
 
-    /**
-     * Init the game and resirect to play the game.:
-     *
-     * @return object as a response
-     */
-    public function initAction() : object
-    {
-        $game = new Game();
-        $histogramPlayer = new Histogram();
-        $histogramPlayer->injectData($game->player->dice);
-        $histogramComputer = new Histogram();
-        $histogramComputer->injectData($game->computer->dice);
-        $this->app->session->set("game", $game);
-
-
-        return $this->app->response->redirect("dice/play");
-    }
 
     /**
      * Play the game - show game status.:
@@ -97,24 +80,19 @@ class MovieController implements AppInjectableInterface
      *
      * @return object As page
      */
-    public function playActionGet() : object
+    public function searchTitleActionGet() : object
     {
-        $title = "Play the game!";
-        $game = $this->app->session->get("game");
-        $haveWinner = $game->playRound("roll");
-        $histogramPlayer = new Histogram();
-        $histogramPlayer->injectData($game->player->dice);
-        $histogramComputer = new Histogram();
-        $histogramComputer->injectData($game->computer->dice);
+        $title = "Serch movies | oophp";
 
-        $data = [
-            "game" => $game,
-            "haveWinner" => $haveWinner,
-            "histogramPlayer" => $histogramPlayer,
-            "histogramComputer" => $histogramComputer
-        ];
+        $searchTitle = $this->app->session->get("searchTitle");
+        $resultset = $this->app->session->get("resultset");
+        $this->app->session->set("resultset", null);
 
-        $this->app->page->add("dice/play", $data);
+        $this->app->page->add("movie/search-title", [
+            "resultset" => $resultset,
+            "searchTitle" => $searchTitle,
+        ]);
+
         return $this->app->page->render([
             "title" => $title,
         ]);
@@ -126,27 +104,17 @@ class MovieController implements AppInjectableInterface
      *
      * @return object AS page
      */
-    public function playActionPost() : object
+    public function searchTitleActionPost() : object
     {
-        $title = "Play the game!";
-        $game = $this->app->session->get("game");
-        $haveWinner = $game->playRound("roll");
-        $histogramPlayer = new Histogram();
-        $histogramPlayer->injectData($game->player->dice);
-        $histogramComputer = new Histogram();
-        $histogramComputer->injectData($game->computer->dice);
+        $this->app->db->connect();
+        $searchTitle = $this->app->request->getPost("searchTitle");
+        //$doSearch = $this->app->request->getPost("doSearch");
+        $sql = "SELECT * FROM kmom05_movie WHERE title LIKE ?;";
+        $resultset = $this->app->db->executeFetchAll($sql, ["%" . $searchTitle . "%"]);
 
-        $data = [
-            "game" => $game,
-            "haveWinner" => $haveWinner,
-            "histogramPlayer" => $histogramPlayer,
-            "histogramComputer" => $histogramComputer
-        ];
+        $this->app->session->set("resultset", $resultset);
 
-        $this->app->page->add("dice/play", $data);
-        return $this->app->page->render([
-            "title" => $title,
-        ]);
+        return $this->app->response->redirect("movie/search-title");
     }
 
     /**
