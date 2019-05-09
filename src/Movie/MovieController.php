@@ -211,4 +211,47 @@ class MovieController implements AppInjectableInterface
 
         return $this->app->response->redirect("movie");
     }
+    /**
+     * Play the game - show game status.:
+     *
+     *
+     * @return object As page
+     */
+    public function deleteActionGet() : object
+    {
+        $title = "Delete movies | oophp";
+
+        $movieId = $this->app->request->getGet("movieId");
+        $sql = "SELECT * FROM kmom05_movie WHERE id = ?;";
+        $this->app->db->connect();
+        $res = $this->app->db->executeFetch($sql, [$movieId]);
+
+        $this->app->page->add("movie/delete", [
+            "resultset" => $res,
+        ]);
+
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
+    }
+
+    /**
+     * Play the game - make a guess.:
+     *
+     *
+     * @return object AS page
+     */
+    public function deleteActionPost() : object
+    {
+        $movieId = $this->app->request->getGet("movieId");
+
+        $this->app->db->connect();
+        $id = $this->app->request->getPost("id");
+        $sql = "DELETE FROM kmom05_movie WHERE id = ?;";
+
+        $this->app->db->execute($sql, [$movieId]);
+
+
+        return $this->app->response->redirect("movie");
+    }
 }

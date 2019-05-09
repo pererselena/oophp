@@ -145,37 +145,37 @@ $request = new \Anax\Request\Request();
 /**
  * CRUD - delete.
  */
- $app->router->get("movie/delete", function () use ($app) {
-     $title = "Delete movies | oophp";
-
-     $movieId = $app->request->getGet("movieId");
-     $sql = "SELECT * FROM kmom05_movie WHERE id = ?;";
-     $app->db->connect();
-     $res = $app->db->executeFetch($sql, [$movieId]);
-
-     $app->page->add("movie/delete", [
-         "resultset" => $res,
-     ]);
-
-     return $app->page->render([
-         "title" => $title,
-     ]);
- });
-
-
-$app->router->post("movie/delete", function () use ($app) {
-
-    $movieId = $app->request->getGet("movieId");
-
-    $app->db->connect();
-    $id = $app->request->getPost("id");
-    $sql = "DELETE FROM kmom05_movie WHERE id = ?;";
-
-    $app->db->execute($sql, [$movieId]);
-
-
-    return $app->response->redirect("movie");
-});
+//  $app->router->get("movie/delete", function () use ($app) {
+//      $title = "Delete movies | oophp";
+//
+//      $movieId = $app->request->getGet("movieId");
+//      $sql = "SELECT * FROM kmom05_movie WHERE id = ?;";
+//      $app->db->connect();
+//      $res = $app->db->executeFetch($sql, [$movieId]);
+//
+//      $app->page->add("movie/delete", [
+//          "resultset" => $res,
+//      ]);
+//
+//      return $app->page->render([
+//          "title" => $title,
+//      ]);
+//  });
+//
+//
+// $app->router->post("movie/delete", function () use ($app) {
+//
+//     $movieId = $app->request->getGet("movieId");
+//
+//     $app->db->connect();
+//     $id = $app->request->getPost("id");
+//     $sql = "DELETE FROM kmom05_movie WHERE id = ?;";
+//
+//     $app->db->execute($sql, [$movieId]);
+//
+//
+//     return $app->response->redirect("movie");
+// });
 
 /**
  * CRUD - Add.
