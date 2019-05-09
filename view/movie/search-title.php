@@ -2,10 +2,7 @@
 ?>
 
 <form method="post">
-    <fieldset>
-    <legend>Search</legend>
-    <label>Title (use % as wildcard):</label>
-    <input type="text" name="searchTitle" value="<?= $searchTitle ?>"/>
+    <input type="text" name="searchTitle" placeholder="Search.." value="<?= $searchTitle ?>"/>
 
     <input type="submit" name="doSearch" value="Search">
 
