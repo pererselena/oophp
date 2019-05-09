@@ -75,7 +75,7 @@ class MovieController implements AppInjectableInterface
 
 
     /**
-     * Play the game - show game status.:
+     * Search by title
      *
      *
      * @return object As page
@@ -99,7 +99,7 @@ class MovieController implements AppInjectableInterface
     }
 
     /**
-     * Play the game - make a guess.:
+     * Search by title
      *
      *
      * @return object AS page
@@ -118,7 +118,7 @@ class MovieController implements AppInjectableInterface
     }
 
     /**
-     * Play the game - show game status.:
+     * Search by year
      *
      *
      * @return object As page
@@ -141,7 +141,7 @@ class MovieController implements AppInjectableInterface
     }
 
     /**
-     * Play the game - make a guess.:
+     * Search by year
      *
      *
      * @return object AS page
@@ -168,7 +168,7 @@ class MovieController implements AppInjectableInterface
         return $this->app->response->redirect("movie/search-year");
     }
     /**
-     * Play the game - show game status.:
+     * Edit movie
      *
      *
      * @return object As page
@@ -192,7 +192,7 @@ class MovieController implements AppInjectableInterface
     }
 
     /**
-     * Play the game - make a guess.:
+     * Edit movie
      *
      *
      * @return object AS page
@@ -212,7 +212,7 @@ class MovieController implements AppInjectableInterface
         return $this->app->response->redirect("movie");
     }
     /**
-     * Play the game - show game status.:
+     * Delete movie
      *
      *
      * @return object As page
@@ -236,7 +236,7 @@ class MovieController implements AppInjectableInterface
     }
 
     /**
-     * Play the game - make a guess.:
+     * Delete movie
      *
      *
      * @return object AS page
@@ -255,7 +255,7 @@ class MovieController implements AppInjectableInterface
         return $this->app->response->redirect("movie");
     }
     /**
-     * Play the game - show game status.:
+     * Add movie
      *
      *
      * @return object As page
@@ -272,7 +272,7 @@ class MovieController implements AppInjectableInterface
     }
 
     /**
-     * Play the game - make a guess.:
+     * Add movie
      *
      *
      * @return object AS page
