@@ -1,13 +1,13 @@
 <?php namespace Anax\View;
 ?>
 
-<form method="post">
-    <input type="text" name="searchTitle" placeholder="Search.." value="<?= $searchTitle ?>"/>
+<form class="search" method="post">
+    <input type="text" name="searchTitle" placeholder="Search title" value="<?= $searchTitle ?>"/>
+    <br>
 
     <input type="submit" name="doSearch" value="Search">
 
     <p><a href="../movie">Show all</a></p>
-    </fieldset>
 </form>
 <?php if($resultset): ?>
     <table>

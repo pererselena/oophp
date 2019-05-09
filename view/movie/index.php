@@ -7,7 +7,8 @@ if (!$resultset) {
 }
 ?>
 <p>
-    <a href="movie/search-title">Search movis</a>
+    <a href="movie/search-title">Search by movie title</a>
+    <a href="movie/search-year">Search movies by year</a>
 </p>
 
 <table>
