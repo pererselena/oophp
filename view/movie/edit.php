@@ -4,8 +4,7 @@
 <form method="post">
     <fieldset>
     <legend>Edit</legend>
-    <label>Id:</label><br>
-    <input disabled name="id" value="<?= $resultset->id ?>"/>
+    <input type="hidden" name="id" value="<?= $resultset->id ?>"/>
     <br>
 
     <label>Title:</label><br>

@@ -254,4 +254,40 @@ class MovieController implements AppInjectableInterface
 
         return $this->app->response->redirect("movie");
     }
+    /**
+     * Play the game - show game status.:
+     *
+     *
+     * @return object As page
+     */
+    public function addActionGet() : object
+    {
+        $title = "Add movies | oophp";
+
+        $this->app->page->add("movie/add");
+
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
+    }
+
+    /**
+     * Play the game - make a guess.:
+     *
+     *
+     * @return object AS page
+     */
+    public function addActionPost() : object
+    {
+        $this->app->db->connect();
+        $year = $this->app->request->getPost("year");
+        $title = $this->app->request->getPost("title");
+        $image = $this->app->request->getPost("image");
+
+        $sql = "INSERT INTO kmom05_movie (title, year, image) VALUES (?, ?, ?);";
+        $this->app->db->execute($sql, [$title, $year, $image]);
+
+
+        return $this->app->response->redirect("movie");
+    }
 }
