@@ -13,10 +13,12 @@ class MyTextFilter
      *                     their respective handler.
      */
     private $filters = [
-        "bbcode"    => "bbcode2html",
-        "link"      => "makeClickable",
-        "markdown"  => "markdown",
-        "nl2br"     => "nl2br",
+        "bbcode"       => "bbcode2html",
+        "link"         => "makeClickable",
+        "markdown"     => "markdown",
+        "nl2br"        => "nl2br",
+        "strip"        => "strip",
+        "ecs"          => "ecs",
     ];
 
 
@@ -29,7 +31,15 @@ class MyTextFilter
      *
      * @return string with the formatted text.
      */
-    public function parse($text, $filter) { }
+    public function parse($text, $filter) {
+        $output = $text;
+        foreach ($filter as $key) {
+            if (array_key_exists($key, $this->filters)) {
+                $output = $this->filters[$key]($output);
+            }
+        }
+        return $output;
+    }
 
 
 
@@ -105,5 +115,27 @@ class MyTextFilter
      */
     public function nl2br($text) {
         return nl2br($text);
+    }
+
+    /**
+     * For convenience access to strip tags formatting of text.
+     *
+     * @param string $text The text that should be formatted.
+     *
+     * @return string the formatted text.
+     */
+    public function strip($text) {
+        return strip_tags($text);
+    }
+
+    /**
+     * For convenience access to htmlentities formatting of text.
+     *
+     * @param string $text The text that should be formatted.
+     *
+     * @return string the formatted text.
+     */
+    public function esc($text) {
+        return htmlentities($text);
     }
 }
