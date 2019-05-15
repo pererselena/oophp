@@ -120,4 +120,23 @@ class MyTextFilterController implements AppInjectableInterface
         $output = $filter->parse($text, ["markdown"]);
         return $output;
     }
+
+    /**
+     * This is the index method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return string as page
+     */
+    public function nl2brAction() : string
+    {
+        $title = "Text filter | oophp";
+
+        $filter = new MyTextFilter();
+        $text = file_get_contents(__DIR__ . "/../../text/nl2br.txt");
+        $text = str_replace('\n', "\n", $text);
+        $output = $filter->parse($text, ["nl2br"]);
+        return $output;
+    }
 }
