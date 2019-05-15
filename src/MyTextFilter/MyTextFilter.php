@@ -137,6 +137,6 @@ class MyTextFilter
      * @return string the formatted text.
      */
     public function esc($text) {
-        return htmlentities($text);
+        return htmlentities($text, ENT_QUOTES);
     }
 }

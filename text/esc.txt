@@ -1,0 +1,3 @@
+<p>My name is Øyvind Åsane. I'm Norwegian. </p>
+<p>Albert Einstein said: 'E=MC²'</p>
+<p><a href="https://www.w3schools.com">Go to w3schools.com</a></p>

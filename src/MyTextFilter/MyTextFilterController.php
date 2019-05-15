@@ -139,4 +139,40 @@ class MyTextFilterController implements AppInjectableInterface
         $output = $filter->parse($text, ["nl2br"]);
         return $output;
     }
+
+    /**
+     * This is the index method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return string as page
+     */
+    public function stripAction() : string
+    {
+        $title = "Text filter | oophp";
+
+        $filter = new MyTextFilter();
+        $text = file_get_contents(__DIR__ . "/../../text/clickable.txt");
+        $output = $filter->parse($text, ["strip"]);
+        return $output;
+    }
+
+    /**
+     * This is the index method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return string as page
+     */
+    public function escAction() : string
+    {
+        $title = "Text filter | oophp";
+
+        $filter = new MyTextFilter();
+        $text = file_get_contents(__DIR__ . "/../../text/esc.txt");
+        $output = $filter->parse($text, ["esc"]);
+        return $output;
+    }
 }
