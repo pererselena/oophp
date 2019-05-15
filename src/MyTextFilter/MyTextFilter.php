@@ -1,6 +1,6 @@
 <?php
 
-namespace Elpr\TextFilter;
+namespace Elpr\MyTextFilter;
 use Michelf\MarkdownExtra;
 
 /**
@@ -35,7 +35,8 @@ class MyTextFilter
         $output = $text;
         foreach ($filter as $key) {
             if (array_key_exists($key, $this->filters)) {
-                $output = $this->filters[$key]($output);
+                $functionToCall = $this->filters[$key];
+                $output = $this->$functionToCall($output);
             }
         }
         return $output;
