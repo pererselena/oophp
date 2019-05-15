@@ -56,14 +56,11 @@ class MyTextFilterController implements AppInjectableInterface
      *
      * @return string as page
      */
-    public function indexAction() : string
+    public function indexAction() : object
     {
         $title = "Text filter | oophp";
 
-        return $title;
-        $this->app->page->add("movie/index", [
-            "resultset" => $resultset,
-        ]);
+        $this->app->page->add("my_text_filter/index");
 
         return $this->app->page->render([
             "title" => $title,
@@ -85,6 +82,42 @@ class MyTextFilterController implements AppInjectableInterface
         $filter = new MyTextFilter();
         $text = file_get_contents(__DIR__ . "/../../text/bbcode.txt");
         $output = $filter->parse($text, ["bbcode"]);
+        return $output;
+    }
+
+    /**
+     * This is the index method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return string as page
+     */
+    public function clickableAction() : string
+    {
+        $title = "Text filter | oophp";
+
+        $filter = new MyTextFilter();
+        $text = file_get_contents(__DIR__ . "/../../text/clickable.txt");
+        $output = $filter->parse($text, ["makeClickable"]);
+        return $output;
+    }
+
+    /**
+     * This is the index method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return string as page
+     */
+    public function markdownAction() : string
+    {
+        $title = "Text filter | oophp";
+
+        $filter = new MyTextFilter();
+        $text = file_get_contents(__DIR__ . "/../../text/sample.md");
+        $output = $filter->parse($text, ["markdown"]);
         return $output;
     }
 }
