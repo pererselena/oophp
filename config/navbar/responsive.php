@@ -94,5 +94,10 @@ return [
             "url" => "movie",
             "title" => "Movies",
         ],
+        [
+            "text" => "TextFilter",
+            "url" => "textfilter",
+            "title" => "Text Filter",
+        ],
     ],
 ];
