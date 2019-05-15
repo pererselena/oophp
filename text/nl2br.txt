@@ -1,0 +1,1 @@
+Det här skall stå på en rad \n och detta på nästa rad.
