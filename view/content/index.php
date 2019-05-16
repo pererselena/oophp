@@ -3,6 +3,13 @@ if (!$resultset) {
     return;
 }
 ?>
+<div class="">
+    <a href="content/admin">Admin</a> |
+    <a href="content/create">Create</a> |
+    <a href="content/reset">Reset database</a> |
+    <a href="content/pages">View pages</a> |
+    <a href="content/blog">View blog</a> |
+</div>
 
 <table>
     <tr class="first">
