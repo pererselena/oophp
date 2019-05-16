@@ -23,12 +23,12 @@ class Content
      * Constructor to initiate the object with current game settings,
      * if available.
      *
-     * @param int $table The table to work on with default.
+     * @param string $table The table to work on with default.
      * @var object  $db   The database object.
      *
      */
 
-    public function __construct(string $table = "kmom06_content", object $db)
+    public function __construct(object $db, string $table = "kmom06_content")
     {
         $this->table = $table;
         $this->db = $db;
