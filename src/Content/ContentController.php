@@ -196,12 +196,34 @@ class ContentController implements AppInjectableInterface
     public function deleteActionPost($id) : object
     {
 
-        if ($this->app->request->getPost("doDelete")) {
+        $doDelete = $this->app->request->getPost("doDelete");
+        if (isset($doDelete)) {
             $this->content->deleteContent($id);
         }
 
 
         return $this->app->response->redirect("content/admin");
+    }
+
+    /**
+     * Admin
+     *
+     *
+     * @return object As page
+     */
+    public function adminActionGet() : object
+    {
+        $title = "Admin | oophp";
+
+        $content = $this->content->adminContent();
+
+        $this->app->page->add("content/admin", [
+            "resultset" => $content,
+        ]);
+
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
     }
 
 

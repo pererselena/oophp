@@ -99,6 +99,18 @@ class Content
     {
         $this->db->connect();
         $sql = "UPDATE $this->table SET deleted=NOW() WHERE id = ?;";
-        $content = $this->db->execute($sql, $id);
+        $content = $this->db->execute($sql, [$id]);
+    }
+    /**
+     * Gets all post from the table.
+     *
+     * @param $params Content information to update
+     */
+    public function adminContent()
+    {
+        $this->db->connect();
+        $sql = "SELECT * FROM $this->table;";
+        $resultset = $this->db->executeFetchAll($sql);
+        return $resultset;
     }
 }
