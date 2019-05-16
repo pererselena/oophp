@@ -101,6 +101,7 @@ class Content
         $sql = "UPDATE $this->table SET deleted=NOW() WHERE id = ?;";
         $content = $this->db->execute($sql, [$id]);
     }
+
     /**
      * Gets all post from the table.
      *
@@ -113,4 +114,55 @@ class Content
         $resultset = $this->db->executeFetchAll($sql);
         return $resultset;
     }
+
+    /**
+     * Gets all post from the table.
+     *
+     * @param $params Content information to update
+     */
+    public function pagesContent()
+    {
+        $this->db->connect();
+        $sql = <<<EOD
+SELECT
+    *,
+    CASE
+        WHEN (deleted <= NOW()) THEN "isDeleted"
+        WHEN (published <= NOW()) THEN "isPublished"
+        ELSE "notPublished"
+    END AS status
+FROM $this->table
+WHERE type=?
+;
+EOD;
+        $resultset = $this->db->executeFetchAll($sql, ["page"]);
+        return $resultset;
+    }
+
+    /**
+     * Gets all post from the table.
+     *
+     * @param $params Content information to update
+     */
+    public function pageGetContent($path)
+    {
+        $this->db->connect();
+        $sql = <<<EOD
+SELECT
+    *,
+    DATE_FORMAT(COALESCE(updated, published), '%Y-%m-%dT%TZ') AS modified_iso8601,
+    DATE_FORMAT(COALESCE(updated, published), '%Y-%m-%d') AS modified
+FROM $this->table
+WHERE
+    path = ?
+    AND type = ?
+    AND (deleted IS NULL OR deleted > NOW())
+    AND published <= NOW()
+;
+EOD;
+        $resultset = $this->db->executeFetch($sql, [$path, "page"]);
+        return $resultset;
+    }
+
+
 }
