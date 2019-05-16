@@ -58,13 +58,13 @@ class ContentController implements AppInjectableInterface
      */
     public function indexAction() : object
     {
-        $title = "Movie database | oophp";
+        $title = "Content database | oophp";
 
         $this->app->db->connect();
-        $sql = "SELECT * FROM kmom05_movie;";
+        $sql = "SELECT * FROM kmom06_content;";
         $resultset = $this->app->db->executeFetchAll($sql);
 
-        $this->app->page->add("movie/index", [
+        $this->app->page->add("content/index", [
             "resultset" => $resultset,
         ]);
 
