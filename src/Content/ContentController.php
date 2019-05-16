@@ -72,6 +72,25 @@ class ContentController implements AppInjectableInterface
     }
 
     /**
+     * This is the create method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return object as page
+     */
+    public function createAction() : object
+    {
+        $title = "Create content | oophp";
+
+        $this->app->page->add("content/create");
+
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
+    }
+
+    /**
      * This is the index method action, it handles:
      * ANY METHOD mountpoint
      * ANY METHOD mountpoint/

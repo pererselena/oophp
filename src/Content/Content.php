@@ -35,7 +35,7 @@ class Content
     }
 
     /**
-     * Returns the lastRoll.
+     * Gets all post from the table.
      *
      * @return int
      */
@@ -46,5 +46,19 @@ class Content
         $sql = "SELECT * FROM $this->table;";
         $resultset = $this->db->executeFetchAll($sql);
         return $resultset;
+    }
+    /**
+     * Gets all post from the table.
+     *
+     * @return int
+     */
+
+    public function create()
+    {
+        $this->db->connect();
+        $sql = "INSERT INTO content (title) VALUES (?);";
+        $db->execute($sql, [$title]);
+        $id = $db->lastInsertId();
+        return $id;
     }
 }
