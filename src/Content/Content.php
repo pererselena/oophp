@@ -89,4 +89,16 @@ class Content
         $sql = "UPDATE $this->table SET title=?, path=?, slug=?, data=?, type=?, filter=?, published=? WHERE id = ?;";
         $content = $this->db->execute($sql, $params);
     }
+
+    /**
+     * Gets all post from the table.
+     *
+     * @param $params Content information to update
+     */
+    public function deleteContent($id)
+    {
+        $this->db->connect();
+        $sql = "UPDATE $this->table SET deleted=NOW() WHERE id = ?;";
+        $content = $this->db->execute($sql, $id);
+    }
 }

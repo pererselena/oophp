@@ -134,28 +134,75 @@ class ContentController implements AppInjectableInterface
      */
     public function editActionPost($id) : object
     {
-        $title = $this->app->request->getPost("contentTitle");
-        $path = $this->app->request->getPost("contentPath");
-        $slug = $this->app->request->getPost("contentSlug");
-        $data = $this->app->request->getPost("contentData");
-        $type = $this->app->request->getPost("contentType");
-        $filter = $this->app->request->getPost("contentFilter");
-        $publish = $this->app->request->getPost("contentPublish");
-        $id = $this->app->request->getPost("contentId");
+        $doDelete = $this->app->request->getPost("doDelete");
+        $doSave = $this->app->request->getPost("doSave");
+        if (isset($doDelete)) {
+            return $this->app->response->redirect("content/delete/" . $id);
+        } elseif (isset($doSave)) {
+            $title = $this->app->request->getPost("contentTitle");
+            $path = $this->app->request->getPost("contentPath");
+            $slug = $this->app->request->getPost("contentSlug");
+            $data = $this->app->request->getPost("contentData");
+            $type = $this->app->request->getPost("contentType");
+            $filter = $this->app->request->getPost("contentFilter");
+            $publish = $this->app->request->getPost("contentPublish");
+            $id = $this->app->request->getPost("contentId");
 
-        if (!$slug) {
-                $slug = slugify($title);
+            if (!$slug) {
+                    $slug = slugify($title);
+                }
+
+            if (!$path) {
+                $path = null;
             }
 
-        if (!$path) {
-            $path = null;
+            $params = [$title, $path, $slug, $data, $type, $filter, $publish, $id];
+
+            $this->content->updateContent($params);
         }
-
-        $params = [$title, $path, $slug, $data, $type, $filter, $publish, $id];
-
-        $this->content->updateContent($params);
 
         return $this->app->response->redirect("content/index");
     }
+
+    /**
+     * delete
+     *
+     *
+     * @return object As page
+     */
+    public function deleteActionGet($id) : object
+    {
+        $title = "Delete | oophp";
+        if (!is_numeric($id)) {
+            die("Not valid for content id.");
+        }
+        $content = $this->content->getContent($id);
+
+        $this->app->page->add("content/delete", [
+            "content" => $content,
+        ]);
+
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
+    }
+
+    /**
+     * Delete
+     *
+     *
+     * @return object AS page
+     */
+    public function deleteActionPost($id) : object
+    {
+
+        if ($this->app->request->getPost("doDelete")) {
+            $this->content->deleteContent($id);
+        }
+
+
+        return $this->app->response->redirect("content/admin");
+    }
+
 
 }
