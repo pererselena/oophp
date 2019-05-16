@@ -1,0 +1,50 @@
+<?php
+/**
+ * Dice game.
+ */
+
+namespace Elpr\Content;
+
+/**
+ * Showing off a standard class with methods and properties.
+ */
+class Content
+{
+    /**
+     * @var string  $table   The table to work on.
+     * @var object  $db   The database object.
+     */
+
+    private $table;
+    private $db;
+
+
+    /**
+     * Constructor to initiate the object with current game settings,
+     * if available.
+     *
+     * @param int $table The table to work on with default.
+     * @var object  $db   The database object.
+     *
+     */
+
+    public function __construct(string $table = "kmom06_content", object $db)
+    {
+        $this->table = $table;
+        $this->db = $db;
+    }
+
+    /**
+     * Returns the lastRoll.
+     *
+     * @return int
+     */
+
+    public function getAllPost()
+    {
+        $this->db->connect();
+        $sql = "SELECT * FROM $this->table;";
+        $resultset = $this->db->executeFetchAll($sql);
+        return $resultset;
+    }
+}
