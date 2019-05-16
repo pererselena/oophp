@@ -1,6 +1,6 @@
 <?php
 // Restore the database to its original settings
-$file   = "sql/setup.sql";
+$file   = "sql/content/setup.sql";
 $mysql  = "/usr/bin/mysql";
 $output = null;
 

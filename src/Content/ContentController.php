@@ -73,6 +73,51 @@ class ContentController implements AppInjectableInterface
         ]);
     }
 
+    /**
+     * This is the index method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return object as page
+     */
+    public function resetAction() : object
+    {
+        $title = "Resetting the database | oophp";
+
+        $this->app->page->add("content/reset");
+
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
+    }
+
+
+    /**
+     * This is the index method action, it handles:
+     * ANY METHOD mountpoint
+     * ANY METHOD mountpoint/
+     * ANY METHOD mountpoint/index
+     *
+     * @return object as page
+     */
+    public function adminAction() : object
+    {
+        $title = "Admin content | oophp";
+
+        $this->app->db->connect();
+        $sql = "SELECT * FROM kmom06_content;";
+        $resultset = $this->app->db->executeFetchAll($sql);
+
+        $this->app->page->add("content/admin", [
+            "resultset" => $resultset,
+        ]);
+
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
+    }
+
 
     /**
      * Search by title
