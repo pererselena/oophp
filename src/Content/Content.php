@@ -40,25 +40,40 @@ class Content
      * @return int
      */
 
-    public function getAllPost()
+    public function getAllContent()
     {
         $this->db->connect();
         $sql = "SELECT * FROM $this->table;";
         $resultset = $this->db->executeFetchAll($sql);
         return $resultset;
     }
+
     /**
      * Gets all post from the table.
      *
      * @return int
      */
 
-    public function create()
+    public function create($title)
     {
         $this->db->connect();
-        $sql = "INSERT INTO content (title) VALUES (?);";
-        $db->execute($sql, [$title]);
-        $id = $db->lastInsertId();
+        $sql = "INSERT INTO $this->table (title) VALUES (?);";
+        $this->db->execute($sql, [$title]);
+        $id = $this->db->lastInsertId();
         return $id;
+    }
+
+    /**
+     * Gets all post from the table.
+     *
+     * @return int
+     */
+
+    public function getContent($id)
+    {
+        $this->db->connect();
+        $sql = "SELECT * FROM $this->table WHERE id = ?;";
+        $content = $this->db->executeFetch($sql, [$id]);
+        return $content;
     }
 }
