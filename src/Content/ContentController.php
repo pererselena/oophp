@@ -126,4 +126,36 @@ class ContentController implements AppInjectableInterface
         ]);
     }
 
+    /**
+     * Edit
+     *
+     *
+     * @return object AS page
+     */
+    public function editActionPost($id) : object
+    {
+        $title = $this->app->request->getPost("contentTitle");
+        $path = $this->app->request->getPost("contentPath");
+        $slug = $this->app->request->getPost("contentSlug");
+        $data = $this->app->request->getPost("contentData");
+        $type = $this->app->request->getPost("contentType");
+        $filter = $this->app->request->getPost("contentFilter");
+        $publish = $this->app->request->getPost("contentPublish");
+        $id = $this->app->request->getPost("contentId");
+
+        if (!$slug) {
+                $slug = slugify($title);
+            }
+
+        if (!$path) {
+            $path = null;
+        }
+
+        $params = [$title, $path, $slug, $data, $type, $filter, $publish, $id];
+
+        $this->content->updateContent($params);
+
+        return $this->app->response->redirect("content/index");
+    }
+
 }

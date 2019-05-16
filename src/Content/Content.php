@@ -66,7 +66,8 @@ class Content
     /**
      * Gets all post from the table.
      *
-     * @return int
+     * @return array
+     * @param $id Content id
      */
 
     public function getContent($id)
@@ -75,5 +76,17 @@ class Content
         $sql = "SELECT * FROM $this->table WHERE id = ?;";
         $content = $this->db->executeFetch($sql, [$id]);
         return $content;
+    }
+
+    /**
+     * Gets all post from the table.
+     *
+     * @param $params Content information to update
+     */
+    public function updateContent($params)
+    {
+        $this->db->connect();
+        $sql = "UPDATE $this->table SET title=?, path=?, slug=?, data=?, type=?, filter=?, published=? WHERE id = ?;";
+        $content = $this->db->execute($sql, $params);
     }
 }
