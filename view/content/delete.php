@@ -1,3 +1,7 @@
+<?php namespace Anax\View;
+
+?>
+
 <form method="post">
     <fieldset>
     <legend>Delete</legend>
@@ -5,7 +9,7 @@
     <input type="hidden" name="contentId" value="<?= esc($content->id) ?>"/>
 
     <p>
-        <label>Title:<br> 
+        <label>Title:<br>
             <input type="text" name="contentTitle" value="<?= esc($content->title) ?>" readonly/>
         </label>
     </p>

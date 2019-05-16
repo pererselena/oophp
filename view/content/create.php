@@ -1,9 +1,13 @@
+<?php namespace Anax\View;
+
+?>
+
 <form method="post">
     <fieldset>
     <legend>Create</legend>
 
     <p>
-        <label>Title:<br> 
+        <label>Title:<br>
         <input type="text" name="contentTitle" default="A Title"/>
         </label>
     </p>

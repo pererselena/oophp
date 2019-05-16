@@ -1,3 +1,8 @@
+<?php namespace Anax\View;
+
+?>
+
+
 <pre><?= $sql ?>
 
 <pre>

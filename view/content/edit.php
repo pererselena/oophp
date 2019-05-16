@@ -1,42 +1,48 @@
+<?php namespace Anax\View;
+
+?>
+
+
+
 <form method="post">
     <fieldset>
     <legend>Edit</legend>
-    <input type="hidden" name="contentId" value="<?= esc($content->id) ?>"/>
+    <input type="hidden" name="contentId" value="<?= e($content->id) ?>"/>
 
     <p>
-        <label>Title:<br> 
-        <input type="text" name="contentTitle" value="<?= esc($content->title) ?>"/>
+        <label>Title:<br>
+        <input type="text" name="contentTitle" value="<?= e($content->title) ?>"/>
         </label>
     </p>
 
     <p>
-        <label>Path:<br> 
-        <input type="text" name="contentPath" value="<?= esc($content->path) ?>"/>
+        <label>Path:<br>
+        <input type="text" name="contentPath" value="<?= e($content->path) ?>"/>
     </p>
 
     <p>
-        <label>Slug:<br> 
-        <input type="text" name="contentSlug" value="<?= esc($content->slug) ?>"/>
+        <label>Slug:<br>
+        <input type="text" name="contentSlug" value="<?= e($content->slug) ?>"/>
     </p>
 
     <p>
-        <label>Text:<br> 
-        <textarea name="contentData"><?= esc($content->data) ?></textarea>
+        <label>Text:<br>
+        <textarea name="contentData"><?= e($content->data) ?></textarea>
      </p>
 
      <p>
-         <label>Type:<br> 
-         <input type="text" name="contentType" value="<?= esc($content->type) ?>"/>
+         <label>Type:<br>
+         <input type="text" name="contentType" value="<?= e($content->type) ?>"/>
      </p>
 
      <p>
-         <label>Filter:<br> 
-         <input type="text" name="contentFilter" value="<?= esc($content->filter) ?>"/>
+         <label>Filter:<br>
+         <input type="text" name="contentFilter" value="<?= e($content->filter) ?>"/>
      </p>
 
      <p>
-         <label>Publish:<br> 
-         <input type="datetime" name="contentPublish" value="<?= esc($content->published) ?>"/>
+         <label>Publish:<br>
+         <input type="datetime" name="contentPublish" value="<?= e($content->published) ?>"/>
      </p>
 
     <p>

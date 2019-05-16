@@ -1,3 +1,7 @@
+<?php namespace Anax\View;
+
+?>
+
 <article>
     <header>
         <h1><?= esc($content->title) ?></h1>

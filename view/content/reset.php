@@ -1,4 +1,7 @@
 <?php
+namespace Anax\View;
+
+
 // Restore the database to its original settings
 $file   = "sql/content/setup.sql";
 $mysql  = "/usr/bin/mysql";

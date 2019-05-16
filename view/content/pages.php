@@ -1,4 +1,7 @@
 <?php
+namespace Anax\View;
+
+
 if (!$resultset) {
     return;
 }
