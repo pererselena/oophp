@@ -260,5 +260,39 @@ class ContentController implements AppInjectableInterface
         ]);
     }
 
+    /**
+     * View pages
+     *
+     *
+     * @return object As page
+     */
+    public function blogActionGet($path = null) : object
+    {
+        $title = "View blog | oophp";
+
+        if ($path) {
+            $content = $this->content->blogpostGetContent($path);
+            if (!$content) {
+                $title = "404";
+                $this->app->page->add("content/404");
+            } else {
+                $title = $content->title;
+                $this->app->page->add("content/blogpost", [
+                    "content" => $content,
+                ]);
+            }
+        } else {
+            $content = $this->content->blogContent();
+
+            $this->app->page->add("content/blog", [
+                "resultset" => $content,
+            ]);
+        }
+
+        return $this->app->page->render([
+            "title" => $title,
+        ]);
+    }
+
 
 }

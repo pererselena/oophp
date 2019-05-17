@@ -11,10 +11,10 @@ if (!$resultset) {
 <?php foreach ($resultset as $row) : ?>
 <section>
     <header>
-        <h1><a href="?route=blog/<?= esc($row->slug) ?>"><?= esc($row->title) ?></a></h1>
-        <p><i>Published: <time datetime="<?= esc($row->published_iso8601) ?>" pubdate><?= esc($row->published) ?></time></i></p>
+        <h1><a href="blog/<?= e($row->slug) ?>"><?= e($row->title) ?></a></h1>
+        <p><i>Published: <time datetime="<?= e($row->published_iso8601) ?>" pubdate><?= e($row->published) ?></time></i></p>
     </header>
-    <?= esc($row->data) ?>
+    <?= e($row->data) ?>
 </section>
 <?php endforeach; ?>
 

@@ -164,5 +164,53 @@ EOD;
         return $resultset;
     }
 
+    /**
+     * Gets all post from the table.
+     *
+     * @param $params Content information to update
+     */
+    public function blogContent()
+    {
+        $this->db->connect();
+        $sql = <<<EOD
+SELECT
+    *,
+    DATE_FORMAT(COALESCE(updated, published), '%Y-%m-%dT%TZ') AS published_iso8601,
+    DATE_FORMAT(COALESCE(updated, published), '%Y-%m-%d') AS published
+FROM $this->table
+WHERE type=?
+ORDER BY published DESC
+;
+EOD;
+        $resultset = $this->db->executeFetchAll($sql, ["post"]);
+        return $resultset;
+    }
+
+    /**
+     * Gets all post from the table.
+     *
+     * @param $params Content information to update
+     */
+    public function blogpostGetContent($path)
+    {
+        $this->db->connect();
+        $sql = <<<EOD
+SELECT
+    *,
+    DATE_FORMAT(COALESCE(updated, published), '%Y-%m-%dT%TZ') AS published_iso8601,
+    DATE_FORMAT(COALESCE(updated, published), '%Y-%m-%d') AS published
+FROM $this->table
+WHERE
+    slug = ?
+    AND type = ?
+    AND (deleted IS NULL OR deleted > NOW())
+    AND published <= NOW()
+ORDER BY published DESC
+;
+EOD;
+        $resultset = $this->db->executeFetch($sql, [$path, "post"]);
+        return $resultset;
+    }
+
 
 }
