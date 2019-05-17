@@ -152,8 +152,8 @@ class ContentController implements AppInjectableInterface
             $id = $this->app->request->getPost("contentId");
 
             if (!$slug) {
-                    $slug = $this->content->slugify($title);
-                }
+                $slug = $this->content->slugify($title);
+            }
 
             $slugCount = $this->content->handleExistingSlug($slug);
 
@@ -195,7 +195,11 @@ class ContentController implements AppInjectableInterface
     {
         $title = "Delete | oophp";
         if (!is_numeric($id)) {
-            die("Not valid for content id.");
+            $this->app->page->add("content/nav");
+            $this->app->page->add("content/error", [
+                "message" => "Not a valid id :("
+            ]);
+            return $this->app->page->render();
         }
         $content = $this->content->getContent($id);
         $this->app->page->add("content/nav");
@@ -318,6 +322,4 @@ class ContentController implements AppInjectableInterface
             "title" => $title,
         ]);
     }
-
-
 }

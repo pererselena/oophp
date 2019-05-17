@@ -77,8 +77,6 @@ class MyTextFilterController implements AppInjectableInterface
      */
     public function bbcodeAction() : string
     {
-        $title = "Text filter | oophp";
-
         $filter = new MyTextFilter();
         $text = file_get_contents(__DIR__ . "/../../text/bbcode.txt");
         $output = $filter->parse($text, ["bbcode"]);
@@ -95,8 +93,6 @@ class MyTextFilterController implements AppInjectableInterface
      */
     public function clickableAction() : string
     {
-        $title = "Text filter | oophp";
-
         $filter = new MyTextFilter();
         $text = file_get_contents(__DIR__ . "/../../text/clickable.txt");
         $output = $filter->parse($text, ["makeClickable"]);
@@ -113,8 +109,6 @@ class MyTextFilterController implements AppInjectableInterface
      */
     public function markdownAction() : string
     {
-        $title = "Text filter | oophp";
-
         $filter = new MyTextFilter();
         $text = file_get_contents(__DIR__ . "/../../text/sample.md");
         $output = $filter->parse($text, ["markdown"]);
@@ -131,8 +125,6 @@ class MyTextFilterController implements AppInjectableInterface
      */
     public function nl2brAction() : string
     {
-        $title = "Text filter | oophp";
-
         $filter = new MyTextFilter();
         $text = file_get_contents(__DIR__ . "/../../text/nl2br.txt");
         $text = str_replace('\n', "\n", $text);
@@ -150,8 +142,6 @@ class MyTextFilterController implements AppInjectableInterface
      */
     public function stripAction() : string
     {
-        $title = "Text filter | oophp";
-
         $filter = new MyTextFilter();
         $text = file_get_contents(__DIR__ . "/../../text/clickable.txt");
         $output = $filter->parse($text, ["strip"]);
@@ -168,8 +158,6 @@ class MyTextFilterController implements AppInjectableInterface
      */
     public function escAction() : string
     {
-        $title = "Text filter | oophp";
-
         $filter = new MyTextFilter();
         $text = file_get_contents(__DIR__ . "/../../text/esc.txt");
         $output = $filter->parse($text, ["esc"]);

@@ -1,6 +1,7 @@
 <?php
 
 namespace Elpr\MyTextFilter;
+
 use Michelf\MarkdownExtra;
 
 /**
@@ -31,7 +32,8 @@ class MyTextFilter
      *
      * @return string with the formatted text.
      */
-    public function parse($text, $filter) {
+    public function parse($text, $filter)
+    {
         $output = $text;
         foreach ($filter as $key) {
             if (array_key_exists($key, $this->filters)) {
@@ -51,7 +53,8 @@ class MyTextFilter
      *
      * @return string the formatted text.
      */
-    public function bbcode2html($text) {
+    public function bbcode2html($text)
+    {
         $search = [
         '/\[b\](.*?)\[\/b\]/is',
         '/\[i\](.*?)\[\/i\]/is',
@@ -82,7 +85,8 @@ class MyTextFilter
      *
      * @return string with formatted anchors.
      */
-    public function makeClickable($text) {
+    public function makeClickable($text)
+    {
         return preg_replace_callback(
             '#\b(?<![href|src]=[\'"])https?://[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/))#',
             function ($matches) {
@@ -100,8 +104,11 @@ class MyTextFilter
      * @param string $text The text that should be formatted.
      *
      * @return string as the formatted html text.
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+     * @SuppressWarnings(PHPMD.StaticAccess)
      */
-    public function markdown($text) {
+    public function markdown($text)
+    {
         return MarkdownExtra::defaultTransform($text);
     }
 
@@ -114,7 +121,8 @@ class MyTextFilter
      *
      * @return string the formatted text.
      */
-    public function nl2br($text) {
+    public function nl2br($text)
+    {
         return nl2br($text);
     }
 
@@ -125,7 +133,8 @@ class MyTextFilter
      *
      * @return string the formatted text.
      */
-    public function strip($text) {
+    public function strip($text)
+    {
         return strip_tags($text);
     }
 
@@ -136,7 +145,8 @@ class MyTextFilter
      *
      * @return string the formatted text.
      */
-    public function esc($text) {
+    public function esc($text)
+    {
         return htmlentities($text, ENT_QUOTES);
     }
 }

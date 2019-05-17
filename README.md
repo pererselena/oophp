@@ -5,6 +5,9 @@ Det här är min redovisningssida för kursen objektorienterad PHP vid BTH.
 
 Version history
 ---------------
+## v6.0.0 (2019-05-17)
+* Kmom06. Added content.
+
 ## v5.0.0 (2019-05-09)
 * Kmom05. Added movie.
 

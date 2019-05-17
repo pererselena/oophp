@@ -61,7 +61,7 @@ class Content
      * @return str the formatted slug.
      */
 
-    public function slugify($str)
+    protected function slugify($str)
     {
         $str = mb_strtolower(trim($str));
         $str = str_replace(['å','ä'], 'a', $str);
@@ -110,7 +110,7 @@ class Content
     {
         $this->db->connect();
         $sql = "UPDATE $this->table SET title=?, path=?, slug=?, data=?, type=?, filter=?, published=? WHERE id = ?;";
-        $content = $this->db->execute($sql, $params);
+        $this->db->execute($sql, $params);
     }
 
     /**
@@ -122,7 +122,7 @@ class Content
     {
         $this->db->connect();
         $sql = "UPDATE $this->table SET deleted=NOW() WHERE id = ?;";
-        $content = $this->db->execute($sql, [$id]);
+        $this->db->execute($sql, [$id]);
     }
 
     /**
@@ -242,7 +242,7 @@ EOD;
      *
      * @param $slug Content information to update
      */
-    public function handleExistingSlug($slug)
+    protected function handleExistingSlug($slug)
     {
         $this->db->connect();
         $sql = "SELECT COUNT(slug) AS count FROM $this->table WHERE slug = ?;";
@@ -255,13 +255,11 @@ EOD;
      *
      * @param $slug Content information to update
      */
-    public function handleExistingPath($path)
+    protected function handleExistingPath($path)
     {
         $this->db->connect();
         $sql = "SELECT COUNT(path) AS count FROM $this->table WHERE path = ?;";
         $resultset = $this->db->executeFetch($sql, [$path]);
         return $resultset->count;
     }
-
-
 }
