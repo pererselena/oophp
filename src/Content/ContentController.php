@@ -161,10 +161,21 @@ class ContentController implements AppInjectableInterface
             if (!$path) {
                 $path = $slug;
             }
+            $pathCount = $this->content->handleExistingPath($path);
+
+            if ($pathCount > 0) {
+                $path = $path . "-" . $pathCount;
+            }
 
             $params = [$title, $path, $slug, $data, $type, $filter, $publish, $id];
-
-            $this->content->updateContent($params);
+            try {
+                $this->content->updateContent($params);
+            } catch (\Exception $e) {
+                $this->app->page->add("content/error", [
+                    "message" => "Path/slug already exist :("
+                ]);
+                return $this->app->page->render();
+            }
         }
 
         return $this->app->response->redirect("content/index");

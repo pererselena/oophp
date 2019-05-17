@@ -250,5 +250,18 @@ EOD;
         return $resultset->count;
     }
 
+    /**
+     * Gets all post from the table.
+     *
+     * @param $slug Content information to update
+     */
+    public function handleExistingPath($path)
+    {
+        $this->db->connect();
+        $sql = "SELECT COUNT(path) AS count FROM $this->table WHERE path = ?;";
+        $resultset = $this->db->executeFetch($sql, [$path]);
+        return $resultset->count;
+    }
+
 
 }
