@@ -52,6 +52,25 @@ class Content
         return $resultset;
     }
 
+
+    /**
+     * Create a slug of a string, to be used as url.
+     *
+     * @param string $str the string to format as slug.
+     *
+     * @return str the formatted slug.
+     */
+
+    public function slugify($str)
+    {
+        $str = mb_strtolower(trim($str));
+        $str = str_replace(['å','ä'], 'a', $str);
+        $str = str_replace('ö', 'o', $str);
+        $str = preg_replace('/[^a-z0-9-]/', '-', $str);
+        $str = trim(preg_replace('/-+/', '-', $str), '-');
+        return $str;
+    }
+
     /**
      * Gets all post from the table.
      *
@@ -216,6 +235,19 @@ EOD;
         $resultset = $this->db->executeFetch($sql, [$path, "post"]);
         $resultset->data = $this->filter->parse($resultset->data, explode(',', $resultset->filter));
         return $resultset;
+    }
+
+    /**
+     * Gets all post from the table.
+     *
+     * @param $slug Content information to update
+     */
+    public function handleExistingSlug($slug)
+    {
+        $this->db->connect();
+        $sql = "SELECT COUNT(slug) AS count FROM $this->table WHERE slug = ?;";
+        $resultset = $this->db->executeFetch($sql, [$slug]);
+        return $resultset->count;
     }
 
 

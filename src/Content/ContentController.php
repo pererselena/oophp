@@ -149,11 +149,17 @@ class ContentController implements AppInjectableInterface
             $id = $this->app->request->getPost("contentId");
 
             if (!$slug) {
-                    $slug = slugify($title);
+                    $slug = $this->content->slugify($title);
                 }
 
+            $slugCount = $this->content->handleExistingSlug($slug);
+
+            if ($slugCount > 0) {
+                $slug = $slug . "-" . $slugCount;
+            }
+
             if (!$path) {
-                $path = null;
+                $path = $slug;
             }
 
             $params = [$title, $path, $slug, $data, $type, $filter, $publish, $id];
