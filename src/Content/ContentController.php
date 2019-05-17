@@ -61,6 +61,7 @@ class ContentController implements AppInjectableInterface
         $title = "Content database | oophp";
 
         $resultset = $this->content->getAllContent();
+        $this->app->page->add("content/nav");
 
         $this->app->page->add("content/index", [
             "resultset" => $resultset,
@@ -82,6 +83,7 @@ class ContentController implements AppInjectableInterface
     public function createActionGet() : object
     {
         $title = "Create content | oophp";
+        $this->app->page->add("content/nav");
 
         $this->app->page->add("content/create");
 
@@ -116,6 +118,7 @@ class ContentController implements AppInjectableInterface
         $title = "Edit | oophp";
 
         $content = $this->content->getContent($id);
+        $this->app->page->add("content/nav");
 
         $this->app->page->add("content/edit", [
             "content" => $content,
@@ -171,6 +174,7 @@ class ContentController implements AppInjectableInterface
             try {
                 $this->content->updateContent($params);
             } catch (\Exception $e) {
+                $this->app->page->add("content/nav");
                 $this->app->page->add("content/error", [
                     "message" => "Path/slug already exist :("
                 ]);
@@ -194,6 +198,7 @@ class ContentController implements AppInjectableInterface
             die("Not valid for content id.");
         }
         $content = $this->content->getContent($id);
+        $this->app->page->add("content/nav");
 
         $this->app->page->add("content/delete", [
             "content" => $content,
@@ -233,6 +238,7 @@ class ContentController implements AppInjectableInterface
         $title = "Admin | oophp";
 
         $content = $this->content->adminContent();
+        $this->app->page->add("content/nav");
 
         $this->app->page->add("content/admin", [
             "resultset" => $content,
@@ -252,6 +258,7 @@ class ContentController implements AppInjectableInterface
     public function pagesActionGet($path = null) : object
     {
         $title = "View pages | oophp";
+        $this->app->page->add("content/nav");
 
         if ($path) {
             $content = $this->content->pageGetContent($path);
@@ -286,6 +293,7 @@ class ContentController implements AppInjectableInterface
     public function blogActionGet($path = null) : object
     {
         $title = "View blog | oophp";
+        $this->app->page->add("content/nav");
 
         if ($path) {
             $content = $this->content->blogpostGetContent($path);
