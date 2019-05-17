@@ -13,10 +13,12 @@ class Content
     /**
      * @var string  $table   The table to work on.
      * @var object  $db   The database object.
+     * @var object  $filter   The database object.
      */
 
     private $table;
     private $db;
+    private $filter;
 
 
     /**
@@ -25,6 +27,7 @@ class Content
      *
      * @param string $table The table to work on with default.
      * @var object  $db   The database object.
+     * @var object  $filter   The database object.
      *
      */
 
@@ -32,6 +35,7 @@ class Content
     {
         $this->table = $table;
         $this->db = $db;
+        $this->filter = new \Elpr\MyTextFilter\MyTextFilter();
     }
 
     /**
@@ -161,6 +165,7 @@ WHERE
 ;
 EOD;
         $resultset = $this->db->executeFetch($sql, [$path, "page"]);
+        $resultset->data = $this->filter->parse($resultset->data, explode(',', $resultset->filter));
         return $resultset;
     }
 
@@ -209,6 +214,7 @@ ORDER BY published DESC
 ;
 EOD;
         $resultset = $this->db->executeFetch($sql, [$path, "post"]);
+        $resultset->data = $this->filter->parse($resultset->data, explode(',', $resultset->filter));
         return $resultset;
     }
 
