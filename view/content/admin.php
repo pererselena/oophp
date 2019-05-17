@@ -29,10 +29,10 @@ if (!$resultset) {
         <td><?= $row->deleted ?></td>
         <td>
             <a class="icons" href="edit/<?= $row->id ?>" title="Edit this content">
-                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                Edit
             </a>
             <a class="icons" href="delete/<?= $row->id ?>" title="Edit this content">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                Delete
             </a>
         </td>
     </tr>

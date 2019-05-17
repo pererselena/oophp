@@ -6,7 +6,7 @@
  * Variables used in module
  */
 @magicNumber: 24px;
-
+@faviconColor: darkgray;
 
 
 /**
@@ -52,7 +52,7 @@ textarea.nowrap {
   input[type=text] {
     width:30em;
   }
-  
+
   textarea {
     width: 40em;
     height: 15em;
@@ -66,3 +66,11 @@ fieldset {
 .span10 { width: 10px * (@columnWidth + @gutterWidth); }
 .span12 { width: 12px * (@columnWidth + @gutterWidth); }
 .span14 { width: 14px * (@columnWidth + @gutterWidth); }
+
+a.icons {
+    color: inherit;
+}
+
+a:hover.icons {
+    opacity: 0.7;
+}

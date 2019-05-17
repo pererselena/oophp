@@ -5164,6 +5164,12 @@ fieldset {
 .span14 {
   width: 560px;
 }
+a.icons {
+  color: inherit;
+}
+a:hover.icons {
+  opacity: 0.7;
+}
 /** --------------------------------------------------------------
  * Linkedin badges
  */
@@ -5198,6 +5204,11 @@ fieldset {
 }
 .rm-small-wrapper {
   display: none;
+}
+.navblog {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
 }
 /**
  * Sample of some self contained module. Start by defining the variables that
